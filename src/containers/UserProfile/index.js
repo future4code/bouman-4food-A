@@ -15,13 +15,16 @@ class UserProfile extends Component {
     return (
       <div>
         <h1>UserProfile</h1>
-        <Button>Va para RestaurantFeed</Button>
-        <Button>Va para Cart</Button>
-        
-        
+        <Button onClick={this.props.goToRestaurantFeed}>Va para RestaurantFeed</Button>
+        <Button onClick={this.props.goToCart}>Va para Cart</Button>
       </div>
     );
   }
 }
 
-export default connect()(UserProfile);
+const mapDispatchToProps = (dispatch) => ({
+  goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed)),
+  goToCart: () => dispatch(push(routes.cart))
+})
+
+export default connect(null, mapDispatchToProps)(UserProfile);

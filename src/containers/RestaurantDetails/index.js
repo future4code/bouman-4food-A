@@ -14,13 +14,15 @@ class RestaurantDetails extends Component {
   render() {
     return (
       <div>
-        <h1> RestaurantDetails</h1>
-        <Button>Va para RestaurantFeed</Button>
-        
-        
+        <h1>RestaurantDetails</h1>
+        <Button onClick={this.props.goToRestaurantFeed}>Va para RestaurantFeed</Button>
       </div>
     );
   }
 }
 
-export default connect()(RestaurantDetails);
+const mapDispatchToProps = (dispatch) => ({
+  goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed))
+})
+
+export default connect(null, mapDispatchToProps)(RestaurantDetails);

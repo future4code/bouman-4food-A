@@ -14,13 +14,17 @@ class Cart extends Component {
   render() {
     return (
       <div>
-        <h1> Carrinho</h1>
-        <Button>Va para RestaurantFeed</Button>
-        <Button>Va para UserProfile</Button>
-        
+        <h1>Carrinho</h1>
+        <Button onClick={this.props.goToRestaurantFeed}>Va para RestaurantFeed</Button>
+        <Button onClick={this.props.goToUserProfile}>Va para UserProfile</Button>
       </div>
     );
   }
 }
 
-export default connect()(Cart);
+const mapDispatchToProps = (dispatch) => ({
+  goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed)),
+  goToUserProfile: () => dispatch(push(routes.userProfile))
+})
+
+export default connect(null, mapDispatchToProps)(Cart);
