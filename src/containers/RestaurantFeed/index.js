@@ -14,14 +14,19 @@ class RestaurantFeed extends Component {
   render() {
     return (
       <div>
-        <h1> RestaurantFeed</h1>
-        <Button>Va para RestaurantDetails</Button>
-        <Button>Va para Cart</Button>
-        <Button>Va para UserProfile</Button>
-        
+        <h1>RestaurantFeed</h1>
+        <Button onClick={this.props.goToRestaurantDetails}>Va para RestaurantDetails</Button>
+        <Button onClick={this.props.goToCart}>Va para Cart</Button>
+        <Button onClick={this.props.goToUserProfile}>Va para UserProfile</Button>
       </div>
     );
   }
 }
 
-export default connect()(RestaurantFeed);
+const mapDispatchToProps = (dispatch) => ({
+  goToRestaurantDetails: () => dispatch(push(routes.restaurantDetails)),
+  goToCart: () => dispatch(push(routes.cart)),
+  goToUserProfile: () => dispatch(push(routes.userProfile))
+})
+
+export default connect(null, mapDispatchToProps)(RestaurantFeed);

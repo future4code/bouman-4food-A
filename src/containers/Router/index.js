@@ -19,7 +19,7 @@ export const routes = {
   restaurantFeed: "/restaurantFeed",
   cart: "/cart",
   userProfile: "/userProfile",
-  restaurantDetails: "restaurantDetails",
+  restaurantDetails: "/restaurantDetails",
 };
 
 function Router(props) {
