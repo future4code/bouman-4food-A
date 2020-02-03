@@ -15,11 +15,14 @@ class SignUpPageAddress extends Component {
     return (
       <div>
         <h1> SignUpPageAddress</h1>
-        <Button>Va para Feed</Button>
-        
+        <Button onClick={this.props.goToRestaurantFeed}>Va para Feed</Button>
       </div>
     );
   }
 }
 
-export default connect()(SignUpPageAddress);
+const mapDispatchToProps = dispatch => ({
+  goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed))
+});
+
+export default connect(null, mapDispatchToProps)(SignUpPageAddress);

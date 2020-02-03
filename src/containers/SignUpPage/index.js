@@ -15,11 +15,16 @@ class SignUpPage extends Component {
     return (
       <div>
         <h1> SignUp Page</h1>
-        <Button>Va para SignUpAddress</Button>
-        <Button>volta para Login</Button>
+        <Button onClick={this.props.goToSignUpAddress}>Va para SignUpAddress</Button>
+        <Button onClick={this.props.goToLoginPage}>volta para Login</Button>
       </div>
     );
   }
 }
 
-export default connect()(SignUpPage);
+const mapDispatchToProps = (dispatch) =>({
+  goToSignUpAddress: () => dispatch(push(routes.signupPageAddress)),
+  goToLoginPage: () => dispatch(push(routes.loginPage))
+})
+
+export default connect(null, mapDispatchToProps)(SignUpPage);

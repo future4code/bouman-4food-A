@@ -15,11 +15,16 @@ class LoginPage extends Component {
     return (
       <div>
         <h1> Login Page</h1>
-        <Button>Va para Feed</Button>
-        <Button>Va para SignUp</Button>
+        <Button onClick={this.props.goToRestaurantFeed}>Va para Feed</Button>
+        <Button onClick={this.props.goToSignUp}>Va para SignUp</Button>
       </div>
     );
   }
 }
 
-export default connect()(LoginPage);
+const mapDispatchToProps = (dispatch) =>({
+  goToSignUp: () => dispatch(push(routes.signupPage)),
+  goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed))
+})
+
+export default connect(null, mapDispatchToProps)(LoginPage);
