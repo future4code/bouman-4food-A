@@ -57,6 +57,7 @@ export function FormContainer(props) {
               variant="contained"
               style={{ background:"#e8222e" }}
               className={classes.submit}
+              onClick={props.onClickCriar}
             >
               {props.buttonText}
             </Button>
