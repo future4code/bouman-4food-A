@@ -11,7 +11,7 @@ const Title = styled.p`
   text-align: center;
   color: #000000;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 15px;
 `;
 
 function AppBarCart(props) {
