@@ -9,7 +9,8 @@ import RestaurantFeed from "../RestaurantFeed"
 import Cart from "../Cart"
 import UserProfile from "../UserProfile"
 import RestaurantDetails from "../RestaurantDetails"
-
+import EditUserProfile from "../EditUserProfile";
+import EditUserAddress from "../EditUserAddress";
 
 export const routes = {
   initialScreen: "/",
@@ -20,6 +21,8 @@ export const routes = {
   cart: "/cart",
   userProfile: "/userProfile",
   restaurantDetails: "/restaurantDetails",
+  editUserProfile: "/editUserProfile",
+  editUserAddress: "/editUserAddress",
 };
 
 function Router(props) {
@@ -34,6 +37,8 @@ function Router(props) {
         <Route exact path={routes.cart} component={Cart} />
         <Route exact path={routes.userProfile} component={UserProfile} />
         <Route exact path={routes.restaurantDetails} component={RestaurantDetails} />
+        <Route exact path={routes.editUserProfile} component={EditUserProfile} />
+        <Route exact path={routes.editUserAddress} component={EditUserAddress} />
       </Switch>
     </ConnectedRouter>
   );
