@@ -34,6 +34,7 @@ class SignUpPageAddress extends Component {
       <div>
         <FormSection>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <FormTitle>Meu endereço</FormTitle>
           <FormInput classes={{ root: 'form' }} name="logradouro" label="Logradouro*" placeholder="Rua / Av." variant="outlined" value={this.state.form.logradouro} onChange={this.handleInputChange} />
           <FormInput classes={{ root: 'form' }} name="numero" label="Número*" placeholder="Número" variant="outlined" value={this.state.form.numero} onChange={this.handleInputChange} />
@@ -43,6 +44,9 @@ class SignUpPageAddress extends Component {
           <FormInput classes={{ root: 'form' }} name="estado" label="Estado*" placeholder="Estado" variant="outlined" value={this.state.form.estado} onChange={this.handleInputChange} />
           <FormButton classes={{ root: 'form' }} variant="contained" color="primary">Salvar</FormButton>
 =======
+=======
+          <FormTitle>Meu endereço</FormTitle>
+>>>>>>> 7c8205778fd2cc9ed7c5eacb27ddde706b3dc195
           <FormInput
             classes={{ root: "form" }}
             name="logradouro"
@@ -104,7 +108,10 @@ class SignUpPageAddress extends Component {
           >
             Salvar
           </FormButton>
+<<<<<<< HEAD
 >>>>>>> 33da78ea266e98d0cc89bbdb031f8f9f3a5d8788
+=======
+>>>>>>> 7c8205778fd2cc9ed7c5eacb27ddde706b3dc195
         </FormSection>
       </div>
     );
