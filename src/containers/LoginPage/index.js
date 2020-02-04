@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router/";
@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import FourFood from "../../images/logo-future-eats-invert.svg";
 import { ImageLogo } from "./style"
-
+import { userLogin } from "../../actions/user"
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -34,7 +34,25 @@ const useStyles = makeStyles(theme => ({
 export function LoginPage(props) {
   const classes = useStyles();
 
- 
+  const [email, setEmail] = useState("")
+
+  const [password, setPassword] = useState("")
+
+  
+  const handleInputEmail = event => {
+    setEmail(event.target.value);
+  };
+
+  const handleInputPassword = event => {
+    setPassword(event.target.value);
+  };
+
+  const handleOnSubmit = (event)=>{
+    event.preventDefault()
+    props.login(email, password)
+  }
+
+  
     return (
       <div>
         <div>
@@ -63,6 +81,7 @@ export function LoginPage(props) {
                 placeholder="email@email.com"
                 autoComplete="email"
                 autoFocus
+                onChange={handleInputEmail}
               />
               <TextField
                 variant="outlined"
@@ -75,6 +94,7 @@ export function LoginPage(props) {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleInputPassword}
               />
               
               <Button
@@ -87,6 +107,7 @@ export function LoginPage(props) {
                   }
                 }
                 className={classes.submit}
+                onClick={handleOnSubmit}
               >
                Entrar
               </Button>
@@ -109,9 +130,12 @@ export function LoginPage(props) {
     );
 }
 
+
+
 const mapDispatchToProps = (dispatch) =>({
   goToSignUp: () => dispatch(push(routes.signupPage)),
-  goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed))
+  goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed)),
+  login: (email, password)=> dispatch(userLogin(email, password))
 })
 
 export default connect(null, mapDispatchToProps)(LoginPage);
