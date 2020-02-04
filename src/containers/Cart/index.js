@@ -15,7 +15,7 @@ import { FormButton } from "../../components/Form"
 const DivAddress = styled.div`
   max-width: 420px;
   height: 76px;
-  margin-top: 65px;
+  margin-top: 45px;
   background-color: #eeeeee;
   display: flex;
   flex-direction: column;
@@ -110,10 +110,13 @@ const DivRadioButton = styled(RadioGroup)`
   margin-left: 16px;
   width: 360px;
   height: 100px;
+  margin-top: 11px;
 `;
 
 const DivButtonConfirm = styled.div`
   margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 130px;
 `;
 
 class Cart extends Component {
@@ -155,7 +158,7 @@ class Cart extends Component {
           style={
             { 
               background: "rgba(232, 34, 46, 0.5)",
-              width: "328px",
+              width: "100%",
               height: "42px",
               borderRadius: "2px",
             }
