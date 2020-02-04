@@ -32,8 +32,8 @@ class SignUpPageAddress extends Component {
   render() {
     return (
       <div>
-        <FormTitle>Meu endereço</FormTitle>
         <FormSection>
+          <FormTitle>Meu endereço</FormTitle>
           <FormInput
             classes={{ root: "form" }}
             name="logradouro"
