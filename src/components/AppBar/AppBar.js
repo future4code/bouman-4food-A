@@ -1,12 +1,14 @@
 import React from "react";
-import { StyledAppBar } from "../../style/styled";
+import { StyledAppBar, StyledBackImg } from "../../style/styled";
 import BackButton from "../../images/back.svg";
 
 function AppBarComponent(props) {
   return (
-    <StyledAppBar>
-      <img src={BackButton} onClick={props.onClickButton} />
-    </StyledAppBar>
+    <div>
+      <StyledAppBar color="inherit" position="static">
+        <StyledBackImg src={BackButton} onClick={props.onClickButton} />
+      </StyledAppBar>
+    </div>
   );
 }
 
