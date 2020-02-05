@@ -19,7 +19,7 @@ export const userLogin = (email, password) => async (dispatch)=>{
         window.alert("Login efetuado")
         dispatch(push(routes.restaurantFeed))
     }catch(error){
-        window.alert("Erro no login")
+        window.alert(error.response.data.message)
     }
 }
 
