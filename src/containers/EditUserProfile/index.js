@@ -1,5 +1,9 @@
 import React from 'react';
 import FormContainer from '../../components/FormContainer';
+import AppBarComponent from '../../components/AppBar/AppBar';
+import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
+import { routes } from '../Router';
 
 export class EditUserProfile extends React.Component{
   constructor(props) {
@@ -27,7 +31,7 @@ export class EditUserProfile extends React.Component{
         autoComplete: 'name',
         //autofocus: ,
         value: this.state.form.nome,
-        onChange: this.props.handleInputChange,
+        onChange: this.handleInputChange,
       },
       {
         label: 'E-mail',
@@ -35,19 +39,20 @@ export class EditUserProfile extends React.Component{
         placeholder: 'email@email.com',
         autoComplete: 'email',
         value: this.state.form.email,
-        onChange: this.props.handleInputChange,
+        onChange: this.handleInputChange,
       },
       {
         label: 'CPF',
         name: 'cpf',
         placeholder: '000.000.000-00',
         value: this.state.form.cpf,
-        onChange: this.props.handleInputChange,
+        onChange: this.handleInputChange,
       },
     ]
     
     return (
       <div>
+        <AppBarComponent onClickButton={this.props.goToProfile} />
         <FormContainer
           formInputs={formInputsData}
           buttonText="Salvar"
@@ -57,4 +62,10 @@ export class EditUserProfile extends React.Component{
   }
 }
 
-export default EditUserProfile;
+function mapDispatchToProps(dispatch) {
+  return {
+    goToProfile: () => dispatch(push(routes.userProfile))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(EditUserProfile);

@@ -10,7 +10,8 @@ const ContainerFooter = styled.div`
     display: flex;
     justify-content:space-evenly;
     align-items:center;
-    position:fixed;
+    position:absolute;
+    overflow:hidden;
     bottom:0;
     margin:0;
     padding:0;

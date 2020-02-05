@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import FourFood from "../../images/logo-future-eats-invert.svg";
-import { ImageLogo } from "./style"
+import { ImageLogo, FontEnter } from "./style"
 import { userLogin } from "../../actions/user"
 
 const useStyles = makeStyles(theme => ({
@@ -55,20 +55,15 @@ export function LoginPage(props) {
   
     return (
       <div>
-        <div>
-          <h1> Login Page</h1>
-          <Button onClick={props.goToRestaurantFeed}>Va para Feed</Button>
-          <Button onClick={props.goToSignUp}>Va para SignUp</Button>
-        </div>
         <ImageLogo>
           <img src={FourFood}/>
         </ImageLogo>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <div className={classes.paper}>
-            <Typography component="h1" variant="h5">
+            <FontEnter>
               Entrar
-            </Typography>
+            </FontEnter>
             <form className={classes.form} noValidate>
               <TextField
                 variant="outlined"
@@ -118,7 +113,7 @@ export function LoginPage(props) {
                 alignItems="center"
                 >
                 <Grid item>
-                  <Link href="#" variant="body2" color="inherit">
+                  <Link  onClick={props.goToSignUp} variant="body2" color="inherit">
                     {"Não possui cadastro? Clique aqui."}
                   </Link>
                 </Grid>

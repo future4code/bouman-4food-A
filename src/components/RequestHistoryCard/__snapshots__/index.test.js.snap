@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`footer renders correctly 1`] = `
+<div
+  className="sc-bdVaJa eeaEId"
+>
+  <div
+    className="MuiPaper-root sc-ifAKCX gQakHq MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <p
+      className="sc-bwzfXH cvHEpj"
+    />
+    <p
+      className="sc-htpNat bLgUvi"
+    />
+    <p
+      className="sc-bxivhb cAIVKn"
+    >
+      SUBTOTAL: R$ 
+    </p>
+  </div>
+</div>
+`;

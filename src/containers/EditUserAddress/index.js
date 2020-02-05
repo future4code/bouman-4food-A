@@ -1,5 +1,9 @@
 import React from "react";
 import FormContainer from "../../components/FormContainer";
+import AppBarComponent from "../../components/AppBar/AppBar";
+import { connect } from "react-redux";
+import { push } from "connected-react-router";
+import { routes } from "../Router";
 
 export class EditUserAddress extends React.Component {
   constructor(props) {
@@ -11,7 +15,8 @@ export class EditUserAddress extends React.Component {
         complemento: "",
         bairro: "",
         cidade: "",
-        estado: ""
+        estado: "",
+        teste: ''
       }
     };
   }
@@ -28,7 +33,9 @@ export class EditUserAddress extends React.Component {
         name: "logradouro",
         placeholder: "Logradouro",
         value: this.state.form.logradouro,
-        onChange: this.props.handleInputChange
+        onChange: this.handleInputChange,
+        //type: ,
+        //required:,
       },
       {
         label: "Número",
@@ -36,44 +43,51 @@ export class EditUserAddress extends React.Component {
         placeholder: "Número",
         autoComplete: "number",
         value: this.state.form.numero,
-        onChange: this.props.handleInputChange
+        onChange: this.handleInputChange
       },
       {
         label: "Complemento",
         name: "complemento",
         placeholder: "Apto. / Bloco",
         value: this.state.form.complemento,
-        onChange: this.props.handleInputChange
+        onChange: this.handleInputChange
       },
       {
         label: "Bairro",
         name: "bairro",
         placeholder: "Bairro",
         value: this.state.form.bairro,
-        onChange: this.props.handleInputChange
+        onChange: this.handleInputChange
       },
       {
         label: "Cidade",
         name: "cidade",
         placeholder: "Cidade",
         value: this.state.form.cidade,
-        onChange: this.props.handleInputChange
+        onChange: this.handleInputChange
       },
       {
         label: "Estado",
         name: "estado",
         placeholder: "Estado",
         value: this.state.form.estado,
-        onChange: this.props.handleInputChange
+        onChange: this.handleInputChange
       }
     ];
 
     return (
       <div>
+        <AppBarComponent onClickButton={this.props.goToProfile} />
         <FormContainer formInputs={formInputsData} buttonText="Salvar" />
       </div>
     );
   }
 }
 
-export default EditUserAddress;
+function mapDispatchToProps(dispatch) {
+  return {
+    goToProfile: () => dispatch(push(routes.userProfile))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(EditUserAddress);

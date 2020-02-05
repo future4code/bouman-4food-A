@@ -19,7 +19,30 @@ const useStyles = makeStyles(theme => ({
 	}
 }))
 
-
+const requestHistory =[
+  {
+    id:"1",
+    text: "Hamburguer Vila Maria",
+    data: "10/10/2019",
+    value: "23,00"
+  },
+  {
+    id:"2",
+    text: "Hamburguer da Vale",
+    data: "03/04/2019",
+    value: "23,00"
+  },{
+    id:"3",
+    text: "Macarrão na Chapa da Teet",
+    data: "04/03/2019",
+    value: "10,00"
+  },{
+    id:"4",
+    text: "Macarrão na Chapa da Teet",
+    data: "04/03/2019",
+    value: "10,00"
+  },
+]
 
 export function UserProfile(props) {
 	const classes = useStyles();
@@ -30,10 +53,12 @@ export function UserProfile(props) {
             <Button onClick={props.goToRestaurantFeed}>Va para RestaurantFeed</Button>
             <Button onClick={props.goToCart}>Va para Cart</Button>
         </div>
-        <Container component="main" maxWidth="xs">
+        <Container style={{position:"absolute",top:"100px", bottom:"57px", overflow:"auto"}} component="main" maxWidth="xs">
 			<CssBaseline />
 			<div className={classes.paper}>
-				<RequestHistoryCard></RequestHistoryCard>
+        {requestHistory.map(request => (
+          <RequestHistoryCard key={request.id} requestText={request.text} requestData={request.data} requestValue={request.value}></RequestHistoryCard>
+        ))}
 			</div>
         </Container>
 		<Footer></Footer>

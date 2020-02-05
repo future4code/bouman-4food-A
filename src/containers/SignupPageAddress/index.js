@@ -8,12 +8,17 @@ import {
   FormInput,
   FormButton
 } from "../../components/Form";
+import { addAddress } from "../../actions/user";
 
 class SignUpPageAddress extends Component {
   constructor(props) {
     super(props);
     this.state = {
+<<<<<<< HEAD
       address: {
+=======
+      form: {
+>>>>>>> 1a057707a2085ac16569deeea9989ba9d413ecc1
         street: "",
         number: "",
         complement: "",
@@ -29,28 +34,76 @@ class SignUpPageAddress extends Component {
     this.setState({ address: { ...this.state.address, [name]: value } });
   };
 
+  onClickToSaveAddress = (e) => {
+    e.preventDefault();
+    
+    const { street, number, complement, neighbourhood, city, state } = this.state.form
+    
+    //verifica se o usuário não inseriu apenas um espaço, aou invés de digitar um texto
+    const streetIsValid = street && street.trim();
+    const numberIsValid = number && number.trim();
+    const neighbourhoodIsValid = neighbourhood && neighbourhood.trim();
+    const cityIsValid = city && city.trim();
+    const stateIsValid = state && state.trim();
+    
+    if(streetIsValid && numberIsValid && neighbourhoodIsValid && cityIsValid && stateIsValid) {
+      const addressData = {
+        street,
+        number,
+        neighbourhood,
+        city,
+        state,
+        complement,
+      }
+
+      this.props.onSaveAddress(addressData)
+      
+      this.setState({ form: {
+        street: "",
+        number: "",
+        complement: "",
+        neighbourhood: "",
+        city: "",
+        state: ""
+      }})
+      
+    } else {
+      window.alert("Insira dados válidos.")
+    }
+  }
+
   render() {
     return (
       <div>
-        <FormSection>
+        <FormSection onSubmit={this.onClickToSaveAddress}>
           <FormTitle>Meu endereço</FormTitle>
           <FormInput
             classes={{ root: "form" }}
             name="street"
+<<<<<<< HEAD
             label="Logradouro*"
+=======
+            label="Logradouro"
+>>>>>>> 1a057707a2085ac16569deeea9989ba9d413ecc1
             placeholder="Rua / Av."
             variant="outlined"
-            value={this.state.form.logradouro}
+            value={this.state.form.street}
             onChange={this.handleInputChange}
+            required
           />
           <FormInput
             classes={{ root: "form" }}
             name="number"
+<<<<<<< HEAD
             label="Número*"
+=======
+            label="Número"
+>>>>>>> 1a057707a2085ac16569deeea9989ba9d413ecc1
             placeholder="Número"
             variant="outlined"
-            value={this.state.form.numero}
+            value={this.state.form.number}
             onChange={this.handleInputChange}
+            required
           />
           <FormInput
             classes={{ root: "form" }}
@@ -58,41 +111,60 @@ class SignUpPageAddress extends Component {
             label="Complemento"
             placeholder="Apto. / Bloco"
             variant="outlined"
-            value={this.state.form.complemento}
+            value={this.state.form.complement}
             onChange={this.handleInputChange}
           />
           <FormInput
             classes={{ root: "form" }}
             name="neighbourhood"
+<<<<<<< HEAD
             label="Bairro*"
+=======
+            label="Bairro"
+>>>>>>> 1a057707a2085ac16569deeea9989ba9d413ecc1
             placeholder="Bairro"
             variant="outlined"
-            value={this.state.form.bairro}
+            value={this.state.form.neighbourhood}
             onChange={this.handleInputChange}
+            required
           />
           <FormInput
             classes={{ root: "form" }}
             name="city"
+<<<<<<< HEAD
             label="Cidade*"
+=======
+            label="Cidade"
+>>>>>>> 1a057707a2085ac16569deeea9989ba9d413ecc1
             placeholder="Cidade"
             variant="outlined"
-            value={this.state.form.cidade}
+            value={this.state.form.city}
             onChange={this.handleInputChange}
+            required
           />
           <FormInput
             classes={{ root: "form" }}
             name="state"
+<<<<<<< HEAD
             label="Estado*"
+=======
+            label="Estado"
+>>>>>>> 1a057707a2085ac16569deeea9989ba9d413ecc1
             placeholder="Estado"
             variant="outlined"
-            value={this.state.form.estado}
+            value={this.state.form.state}
             onChange={this.handleInputChange}
+            required
           />
           <FormButton
             classes={{ root: "form" }}
             variant="contained"
             color="primary"
+<<<<<<< HEAD
             onClick={console.log(this.state.address)}
+=======
+            type='submit'
+>>>>>>> 1a057707a2085ac16569deeea9989ba9d413ecc1
           >
             Salvar
           </FormButton>
@@ -103,7 +175,8 @@ class SignUpPageAddress extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed))
+  goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed)),
+  onSaveAddress: (addressData) => dispatch(addAddress(addressData))
 });
 
 export default connect(null, mapDispatchToProps)(SignUpPageAddress);

@@ -22,3 +22,29 @@ export const userLogin = (email, password) => async (dispatch)=>{
         window.alert("Erro no login")
     }
 }
+
+export const userSignup = (newUserData) => async (dispatch) => {
+    try {
+        const response = await axios.post(`${baseUrl}/signup`, newUserData)
+        window.localStorage.setItem("token", response.data.token)
+        dispatch(push(routes.signupPageAddress))
+    } catch(e) {
+        window.alert(e.response.data.message)
+    }
+}
+
+export const addAddress = (addressData) => async (dispatch) => {
+    const token = window.localStorage.getItem("token")
+    const requestHeader = {
+        headers: {
+            auth: token,
+        }
+    }
+    try {
+        const response = await axios.put(`${baseUrl}/address`, addressData, requestHeader)
+        window.localStorage.setItem("token", response.data.token)
+        dispatch(push(routes.restaurantFeed))
+    } catch(e) {
+        window.alert(e.response.data.message)
+    }
+}
