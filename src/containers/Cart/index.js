@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router/";
@@ -9,7 +9,9 @@ import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import AppBarCart from "../../components/AppBarCart"
 import { FormButton } from "../../components/Form"
-
+import styled from "styled-components";
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Container from '@material-ui/core/Container';
 
 const DivAddress = styled.div`
   max-width: 420px;
@@ -118,7 +120,7 @@ const DivButtonConfirm = styled.div`
   margin-top: 130px;
 `;
 
-class Cart extends Component {
+class Cart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -156,7 +158,7 @@ class Cart extends Component {
             <FormOfPayment>Forma de pagamento</FormOfPayment>
             <LineHr />
             <FormControl>
-                <DivRadioButton name="payment" value={props.value} onChange={handleChange}>
+                <DivRadioButton name="payment" value={this.props.value} onChange={this.handleChange}>
                   <FormControlLabel value="money" control={<Radio />} label="Dinheiro" />
                   <FormControlLabel value="creditCard" control={<Radio />} label="Cartão de crédito" />
                 </DivRadioButton>
