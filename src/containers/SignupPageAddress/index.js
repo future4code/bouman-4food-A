@@ -27,7 +27,7 @@ class SignUpPageAddress extends Component {
 
   handleInputChange = e => {
     const { name, value } = e.target;
-    this.setState({ address: { ...this.state.address, [name]: value } });
+    this.setState({ form: { ...this.state.form, [name]: value } });
   };
 
   onClickToSaveAddress = (e) => {
