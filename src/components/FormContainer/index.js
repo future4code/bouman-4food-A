@@ -40,7 +40,7 @@ export function FormContainer(props) {
               <TextField
                 variant="outlined"
                 margin="normal"
-                required
+                required={input.required}
                 fullWidth
                 label={input.label}
                 name={input.name}
@@ -49,6 +49,7 @@ export function FormContainer(props) {
                 autofocus={input.autoFocus}
                 value={input.value}
                 onChange={input.onChange}
+                type={input.type}
               />
             ))}
             <Button
