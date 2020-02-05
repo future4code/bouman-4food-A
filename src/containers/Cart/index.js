@@ -130,6 +130,15 @@ class Cart extends Component {
   handleChange = event => {
     this.setState({value: event.target.value})
   } 
+
+  componentDidMount(){
+    const token = window.localStorage.getItem("token")
+    if(token === null){
+      this.props.goToLoginPage()
+    }else{
+      
+    }
+  }
   render() {
     return (
       <div>
@@ -177,7 +186,8 @@ class Cart extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed)),
-  goToUserProfile: () => dispatch(push(routes.userProfile))
+  goToUserProfile: () => dispatch(push(routes.userProfile)),
+  goToLoginPage: () => dispatch(push(routes.loginPage))
 })
 
 export default connect(null, mapDispatchToProps)(Cart);
