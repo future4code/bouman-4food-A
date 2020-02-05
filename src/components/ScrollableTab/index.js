@@ -65,36 +65,18 @@ export default function ScrollableTabsButtonAuto(props) {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-          <Tab label="Item Four" {...a11yProps(3)} />
-          <Tab label="Item Five" {...a11yProps(4)} />
-          <Tab label="Item Six" {...a11yProps(5)} />
-          <Tab label="Item Seven" {...a11yProps(6)} />
+          
+          <Tab label="Asiática" {...a11yProps(0)} />
+          <Tab label="Árabe" {...a11yProps(1)} />
+          <Tab label="Baiana" {...a11yProps(2)} />
+          <Tab label="Carnes" {...a11yProps(3)} />
+          <Tab label="Hamburguer" {...a11yProps(4)} />
+          <Tab label="Italiana" {...a11yProps(5)} />
+          <Tab label="Petiscos" {...a11yProps(6)} />
+          <Tab label="Sorvetes" {...a11yProps(7)} />
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        Item One
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Item Six
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        Item Seven
-      </TabPanel>
+      
     </div>
   );
 }

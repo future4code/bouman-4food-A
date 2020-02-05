@@ -24,4 +24,4 @@ export const fetchRestaurants = () => async(dispatch) =>{
     }catch(error){
         window.alert(error.response.data.message)
     }
-}
+}   
