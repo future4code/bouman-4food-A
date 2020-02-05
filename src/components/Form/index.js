@@ -2,6 +2,11 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import styled from "styled-components";
 
+export const FormDiv = styled.div`
+  margin: auto;
+  max-width: 480px;
+`
+
 export const FormSection = styled.form`
   height: 576px;
   margin: 0 16px;

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router/";
 import {
+  FormDiv,
   FormSection,
   FormTitle,
   FormInput,
@@ -71,6 +72,7 @@ class SignUpPageAddress extends Component {
   render() {
     return (
       <div>
+        <FormDiv>
         <FormSection onSubmit={this.onClickToSaveAddress}>
           <FormTitle>Meu endereço</FormTitle>
           <FormInput
@@ -141,6 +143,7 @@ class SignUpPageAddress extends Component {
             Salvar
           </FormButton>
         </FormSection>
+        </FormDiv>
       </div>
     );
   }
