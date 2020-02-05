@@ -182,6 +182,7 @@ class Cart extends Component {
       </div>
     );
 }
+}
 
 const mapDispatchToProps = (dispatch) => ({
   goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed)),
