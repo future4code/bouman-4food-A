@@ -16,12 +16,14 @@
     "react-redux": "7.1.1",
     "react-router-dom": "5.1.2",
     "react-scripts": "3.0.1",
+    "react-test-renderer": "^16.8.6",
     "redux": "4.0.4",
     "redux-thunk": "2.3.0",
     "styled-components": "4.4.1"
   },
   "devDependencies": {
-    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "typescript": "3.3.3"
   },
   "scripts": {
