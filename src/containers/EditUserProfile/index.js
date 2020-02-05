@@ -17,6 +17,15 @@ export class EditUserProfile extends React.Component{
     }
   }
 
+  componentDidMount(){
+    const token = window.localStorage.getItem("token")
+    if(token === null){
+      this.props.goToLoginPage()
+    }else{
+      
+    }
+  }
+
   handleInputChange = (e) => {
     const { name, value } = e.target;
     this.setState({ form: { ...this.state.form, [name]: value } })
@@ -64,7 +73,8 @@ export class EditUserProfile extends React.Component{
 
 function mapDispatchToProps(dispatch) {
   return {
-    goToProfile: () => dispatch(push(routes.userProfile))
+    goToProfile: () => dispatch(push(routes.userProfile)),
+    goToLoginPage: () => dispatch(push(routes.loginPage))
   }
 }
 

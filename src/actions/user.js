@@ -16,10 +16,14 @@ export const userLogin = (email, password) => async (dispatch)=>{
     try{
         const response = await axios.post(`${baseUrl}/login`, login)
         window.localStorage.setItem("token", response.data.token)
-        window.alert("Login efetuado")
-        dispatch(push(routes.restaurantFeed))
+        if(response.data.user.hasAddress === false){
+            window.alert("Você não tem nenhum endereço cadastrado. Por favor cadastre agora.")
+            dispatch(push(routes.signupPageAddress))
+        }else{
+            dispatch(push(routes.restaurantFeed))
+        }
     }catch(error){
-        window.alert("Erro no login")
+        window.alert(error.response.data.message)
     }
 }
 

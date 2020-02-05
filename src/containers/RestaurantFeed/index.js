@@ -7,6 +7,8 @@ import TextField from "@material-ui/core/TextField";
 import AppBarComponent from "../../components/AppBar/AppBar";
 import Footer from "../../components/Footer";
 import RestaurantCard from "../../components/RestaurantCard";
+import ScrollableTabsButtonAuto from "../../components/ScrollableTab"
+import { fetchRestaurants } from '../../actions/restaurantsActions'
 
 class RestaurantFeed extends Component {
   constructor(props) {
@@ -14,16 +16,28 @@ class RestaurantFeed extends Component {
     this.state = {};
   }
 
+  componentDidMount(){
+    const token = window.localStorage.getItem("token")
+    if(token === null){
+      this.props.goToLoginPage()
+    }else{
+      this.props.getRestaurants()
+    }
+  }
+
   render() {
+    
+    const { restaurants } = this.props
+
     return (
       <div>
         <AppBarComponent title="iFuture" />
         <h1>RestaurantFeed</h1>
+        <ScrollableTabsButtonAuto tabLabel={restaurants.category}/>
         <RestaurantCard />
         <RestaurantCard />
         <RestaurantCard />
         <RestaurantCard />
-        
         <Button onClick={this.props.goToRestaurantDetails}>Va para RestaurantDetails</Button>
         <Button onClick={this.props.goToCart}>Va para Cart</Button>
         <Button onClick={this.props.goToUserProfile}>Va para UserProfile</Button>
@@ -33,10 +47,16 @@ class RestaurantFeed extends Component {
   }
 }
 
+const mapStateToProps = (state) =>({
+  restaurants: state.restaurants.allRestaurants
+})
+
 const mapDispatchToProps = (dispatch) => ({
   goToRestaurantDetails: () => dispatch(push(routes.restaurantDetails)),
   goToCart: () => dispatch(push(routes.cart)),
-  goToUserProfile: () => dispatch(push(routes.userProfile))
+  goToUserProfile: () => dispatch(push(routes.userProfile)),
+  goToLoginPage: () => dispatch(push(routes.loginPage)),
+  getRestaurants: () => dispatch(fetchRestaurants()),
 })
 
-export default connect(null, mapDispatchToProps)(RestaurantFeed);
+export default connect(mapStateToProps, mapDispatchToProps)(RestaurantFeed);
