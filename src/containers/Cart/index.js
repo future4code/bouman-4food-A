@@ -9,31 +9,136 @@ import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import AppBarCart from "../../components/AppBarCart"
 import { FormButton } from "../../components/Form"
-import Container from '@material-ui/core/Container';
-import {  
-  DivAddress,
-  FontAddressTitle,
-  FontAddressUser,
-  TextCart,
-  FreightPrice,
-  DivPrice,
-  TitleDivPrice,
-  TotalPrice,
-  FormOfPayment,
-  LineHr,
-  DivRadioButton,
-  DivButtonConfirm
-} from "./style"
 
-export function Cart(props) {
 
-  const [money, setMoney] = useState("")
+const DivAddress = styled.div`
+  max-width: 420px;
+  height: 76px;
+  margin-top: 45px;
+  background-color: #eeeeee;
+  display: flex;
+  flex-direction: column;
+`;
 
-  
-  const handleChange = event => {
-    setMoney(event.target.value);
-  };
-  
+const FontAddressTitle = styled.label`
+  font-family: Roboto;
+  font-size: 16px;
+  letter-spacing: -0.39px;
+  color: #b8b8b8;
+  margin-left: 16px;
+  margin-top: 16px;
+
+`;
+
+const FontAddressUser = styled.label`
+  font-family: Roboto;
+  font-size: 16px;
+  letter-spacing: -0.39px;
+  color: #000000;
+  margin-left: 16px;
+  margin-top: 8px;
+`;
+
+const TextCart = styled.h4`
+  width: 296px;
+  height: 18px;
+  opacity: 0.89;
+  font-family: Roboto;
+  font-size: 16px;
+  letter-spacing: -0.39px;
+  text-align: center;
+  color: #000000;
+  margin: 0 auto;
+  margin-top: 20px;
+`;
+
+const FreightPrice = styled.p`
+  width: 104px;
+  height: 18px;
+  font-family: Roboto;
+  font-size: 16px;
+  letter-spacing: -0.39px;
+  text-align: right;
+  color: #000000;
+  margin-left: 240px;
+  margin-top: 83px;
+`;
+
+const DivPrice = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: 14px;
+`;
+
+const TitleDivPrice = styled.p`
+  width: 164px;
+  height: 18px;
+  font-family: Roboto;
+  font-size: 16px;
+  letter-spacing: -0.39px;
+  color: #000000;
+  margin-left: 16px;
+`;
+
+const TotalPrice = styled.p`
+  width: 164px;
+  height: 18px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: bold;;
+  letter-spacing: -0.43px;
+  text-align: right;
+  color: #e8222e;
+`;
+const FormOfPayment = styled.p`
+  width: 328px;
+  height: 18px;
+  font-family: Roboto;
+  font-size: 16px;
+  letter-spacing: -0.39px;
+  color: #000000;
+  margin-left: 16px;
+`;
+const LineHr = styled.hr`
+  margin-left: 16px;
+  margin-right: 16px;
+  border: 0.7px solid black;
+`;
+
+const DivRadioButton = styled(RadioGroup)`
+  margin-left: 16px;
+  width: 360px;
+  height: 100px;
+  margin-top: 11px;
+`;
+
+const DivButtonConfirm = styled.div`
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 130px;
+`;
+
+class Cart extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 'money',
+    };
+  }
+
+  handleChange = event => {
+    this.setState({value: event.target.value})
+  } 
+
+  componentDidMount(){
+    const token = window.localStorage.getItem("token")
+    if(token === null){
+      this.props.goToLoginPage()
+    }else{
+      
+    }
+  }
+  render() {
     return (
       <div>
         <AppBarCart />
@@ -80,7 +185,8 @@ export function Cart(props) {
 
 const mapDispatchToProps = (dispatch) => ({
   goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed)),
-  goToUserProfile: () => dispatch(push(routes.userProfile))
+  goToUserProfile: () => dispatch(push(routes.userProfile)),
+  goToLoginPage: () => dispatch(push(routes.loginPage))
 })
 
 export default connect(null, mapDispatchToProps)(Cart);

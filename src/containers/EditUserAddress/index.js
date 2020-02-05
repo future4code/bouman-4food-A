@@ -26,6 +26,15 @@ export class EditUserAddress extends React.Component {
     this.setState({ form: { ...this.state.form, [name]: value } });
   };
 
+  componentDidMount(){
+    const token = window.localStorage.getItem("token")
+    if(token === null){
+      this.props.goToLoginPage()
+    }else{
+      
+    }
+  }
+
   render() {
     const formInputsData = [
       {
@@ -86,7 +95,8 @@ export class EditUserAddress extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    goToProfile: () => dispatch(push(routes.userProfile))
+    goToProfile: () => dispatch(push(routes.userProfile)),
+    goToLoginPage: () => dispatch(push(routes.loginPage))
   }
 }
 
