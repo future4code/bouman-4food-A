@@ -4,6 +4,9 @@ import { push } from "connected-react-router";
 import { routes } from "../Router/";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import AppBarComponent from "../../components/AppBar/AppBar";
+import Footer from "../../components/Footer";
+import RestaurantCard from "../../components/RestaurantCard";
 import ScrollableTabsButtonAuto from "../../components/ScrollableTab"
 import { fetchRestaurants } from '../../actions/restaurantsActions'
 
@@ -28,11 +31,17 @@ class RestaurantFeed extends Component {
 
     return (
       <div>
+        <AppBarComponent title="iFuture" />
         <h1>RestaurantFeed</h1>
         <ScrollableTabsButtonAuto tabLabel={restaurants.category}/>
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
         <Button onClick={this.props.goToRestaurantDetails}>Va para RestaurantDetails</Button>
         <Button onClick={this.props.goToCart}>Va para Cart</Button>
         <Button onClick={this.props.goToUserProfile}>Va para UserProfile</Button>
+        <Footer />
       </div>
     );
   }
