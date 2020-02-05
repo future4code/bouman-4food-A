@@ -81,13 +81,13 @@ export function RequestHistoryCard(props) {
     <RequestHistoryWrapper>
         <PaperStyled>
                 <TypoRequest >
-                    Bullguer Vila Madalena
+                   {props.requestText}
                 </TypoRequest>
                 <TypoData>
-                    13 de outubro de 2020
+                    {props.requestData}
                 </TypoData>
                 <TypoSubTotal>
-                    SUBTOTAL R$67,00
+                    SUBTOTAL: R$ {props.requestValue}
                 </TypoSubTotal>
         </PaperStyled>
     </RequestHistoryWrapper>    
