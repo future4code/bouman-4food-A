@@ -52,3 +52,21 @@ export const addAddress = (addressData) => async (dispatch) => {
         window.alert(e.response.data.message)
     }
 }
+
+const getUsers = (users)=>({
+    type: "GET_ALL_USERS",
+    payload:{
+        users,
+    }
+})
+
+export const getProfile = () => async (dispatch)=>{
+    const token = window.localStorage.getItem("token")
+
+    const response = await axios.get(`${baseUrl}/profile`, {
+        headers:{
+            auth: token,
+        }
+    })
+    dispatch(getUsers(response.data.user))
+}
