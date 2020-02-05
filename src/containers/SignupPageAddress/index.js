@@ -14,11 +14,7 @@ class SignUpPageAddress extends Component {
   constructor(props) {
     super(props);
     this.state = {
-<<<<<<< HEAD
-      address: {
-=======
       form: {
->>>>>>> 1a057707a2085ac16569deeea9989ba9d413ecc1
         street: "",
         number: "",
         complement: "",
@@ -80,11 +76,7 @@ class SignUpPageAddress extends Component {
           <FormInput
             classes={{ root: "form" }}
             name="street"
-<<<<<<< HEAD
-            label="Logradouro*"
-=======
             label="Logradouro"
->>>>>>> 1a057707a2085ac16569deeea9989ba9d413ecc1
             placeholder="Rua / Av."
             variant="outlined"
             value={this.state.form.street}
@@ -94,11 +86,7 @@ class SignUpPageAddress extends Component {
           <FormInput
             classes={{ root: "form" }}
             name="number"
-<<<<<<< HEAD
-            label="Número*"
-=======
             label="Número"
->>>>>>> 1a057707a2085ac16569deeea9989ba9d413ecc1
             placeholder="Número"
             variant="outlined"
             value={this.state.form.number}
@@ -117,11 +105,7 @@ class SignUpPageAddress extends Component {
           <FormInput
             classes={{ root: "form" }}
             name="neighbourhood"
-<<<<<<< HEAD
-            label="Bairro*"
-=======
             label="Bairro"
->>>>>>> 1a057707a2085ac16569deeea9989ba9d413ecc1
             placeholder="Bairro"
             variant="outlined"
             value={this.state.form.neighbourhood}
@@ -131,11 +115,7 @@ class SignUpPageAddress extends Component {
           <FormInput
             classes={{ root: "form" }}
             name="city"
-<<<<<<< HEAD
-            label="Cidade*"
-=======
             label="Cidade"
->>>>>>> 1a057707a2085ac16569deeea9989ba9d413ecc1
             placeholder="Cidade"
             variant="outlined"
             value={this.state.form.city}
@@ -145,11 +125,7 @@ class SignUpPageAddress extends Component {
           <FormInput
             classes={{ root: "form" }}
             name="state"
-<<<<<<< HEAD
-            label="Estado*"
-=======
             label="Estado"
->>>>>>> 1a057707a2085ac16569deeea9989ba9d413ecc1
             placeholder="Estado"
             variant="outlined"
             value={this.state.form.state}
@@ -160,11 +136,7 @@ class SignUpPageAddress extends Component {
             classes={{ root: "form" }}
             variant="contained"
             color="primary"
-<<<<<<< HEAD
-            onClick={console.log(this.state.address)}
-=======
             type='submit'
->>>>>>> 1a057707a2085ac16569deeea9989ba9d413ecc1
           >
             Salvar
           </FormButton>
