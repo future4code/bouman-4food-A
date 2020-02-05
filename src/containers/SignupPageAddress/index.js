@@ -13,43 +13,30 @@ class SignUpPageAddress extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      form: {
-        logradouro: "",
-        numero: "",
-        complemento: "",
-        bairro: "",
-        cidade: "",
-        estado: ""
+      address: {
+        street: "",
+        number: "",
+        complement: "",
+        neighbourhood: "",
+        city: "",
+        state: ""
       }
     };
   }
 
   handleInputChange = e => {
     const { name, value } = e.target;
-    this.setState({ form: { ...this.state.form, [name]: value } });
+    this.setState({ address: { ...this.state.address, [name]: value } });
   };
 
   render() {
     return (
       <div>
         <FormSection>
-<<<<<<< HEAD
-<<<<<<< HEAD
           <FormTitle>Meu endereço</FormTitle>
-          <FormInput classes={{ root: 'form' }} name="logradouro" label="Logradouro*" placeholder="Rua / Av." variant="outlined" value={this.state.form.logradouro} onChange={this.handleInputChange} />
-          <FormInput classes={{ root: 'form' }} name="numero" label="Número*" placeholder="Número" variant="outlined" value={this.state.form.numero} onChange={this.handleInputChange} />
-          <FormInput classes={{ root: 'form' }} name="complemento" label="Complemento" placeholder="Apto. / Bloco" variant="outlined" value={this.state.form.complemento} onChange={this.handleInputChange} />
-          <FormInput classes={{ root: 'form' }} name="bairro" label="Bairro*" placeholder="Bairro" variant="outlined" value={this.state.form.bairro} onChange={this.handleInputChange} />
-          <FormInput classes={{ root: 'form' }} name="cidade" label="Cidade*" placeholder="Cidade" variant="outlined" value={this.state.form.cidade} onChange={this.handleInputChange} />
-          <FormInput classes={{ root: 'form' }} name="estado" label="Estado*" placeholder="Estado" variant="outlined" value={this.state.form.estado} onChange={this.handleInputChange} />
-          <FormButton classes={{ root: 'form' }} variant="contained" color="primary">Salvar</FormButton>
-=======
-=======
-          <FormTitle>Meu endereço</FormTitle>
->>>>>>> 7c8205778fd2cc9ed7c5eacb27ddde706b3dc195
           <FormInput
             classes={{ root: "form" }}
-            name="logradouro"
+            name="street"
             label="Logradouro*"
             placeholder="Rua / Av."
             variant="outlined"
@@ -58,7 +45,7 @@ class SignUpPageAddress extends Component {
           />
           <FormInput
             classes={{ root: "form" }}
-            name="numero"
+            name="number"
             label="Número*"
             placeholder="Número"
             variant="outlined"
@@ -67,7 +54,7 @@ class SignUpPageAddress extends Component {
           />
           <FormInput
             classes={{ root: "form" }}
-            name="complemento"
+            name="complement"
             label="Complemento"
             placeholder="Apto. / Bloco"
             variant="outlined"
@@ -76,7 +63,7 @@ class SignUpPageAddress extends Component {
           />
           <FormInput
             classes={{ root: "form" }}
-            name="bairro"
+            name="neighbourhood"
             label="Bairro*"
             placeholder="Bairro"
             variant="outlined"
@@ -85,7 +72,7 @@ class SignUpPageAddress extends Component {
           />
           <FormInput
             classes={{ root: "form" }}
-            name="cidade"
+            name="city"
             label="Cidade*"
             placeholder="Cidade"
             variant="outlined"
@@ -94,7 +81,7 @@ class SignUpPageAddress extends Component {
           />
           <FormInput
             classes={{ root: "form" }}
-            name="estado"
+            name="state"
             label="Estado*"
             placeholder="Estado"
             variant="outlined"
@@ -105,13 +92,10 @@ class SignUpPageAddress extends Component {
             classes={{ root: "form" }}
             variant="contained"
             color="primary"
+            onClick={console.log(this.state.address)}
           >
             Salvar
           </FormButton>
-<<<<<<< HEAD
->>>>>>> 33da78ea266e98d0cc89bbdb031f8f9f3a5d8788
-=======
->>>>>>> 7c8205778fd2cc9ed7c5eacb27ddde706b3dc195
         </FormSection>
       </div>
     );
