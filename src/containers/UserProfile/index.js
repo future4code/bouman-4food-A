@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router/";
 import Button from "@material-ui/core/Button";
-import Container from '@material-ui/core/Container';
+
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { RequestHistoryCard } from './../../components/RequestHistoryCard'
@@ -16,12 +16,13 @@ import {
   DivUserProfile,
   EditAddress,
   LineHr,
+  ContainerResquestHistory,
 } from "./style";
 import IconEdit from "../../images/edit.svg"
+import AppBarCart from "../../components/AppBarCart";
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -46,6 +47,12 @@ const requestHistory = [
     data: "04/03/2019",
     value: "10,00"
   },
+  {
+    id: "4",
+    text: "Macarrão na Chapa da Teet",
+    data: "04/03/2019",
+    value: "10,00"
+  },
 ]
 
 export function UserProfile(props) {
@@ -57,6 +64,7 @@ export function UserProfile(props) {
 
   return (
     <div>
+      <AppBarCart title="Meu Perfil"/>
       <DivUserProfile>
         <EditAddress>
           <FontProfile>{props.users.name}</FontProfile>
@@ -72,16 +80,16 @@ export function UserProfile(props) {
           <FontProfile>{props.users.address}</FontProfile>
         </DivAddress>
         <FontProfile>Histórico de pedidos</FontProfile>
+        <LineHr />
       </DivUserProfile>
-      <LineHr />
-      <Container style={{ position: "absolute", top: "210px", bottom: "47px", overflow: "auto" }} component="main" maxWidth="xs">
-        <CssBaseline />
+      <ContainerResquestHistory  component="main" maxWidth="xs">
+       <CssBaseline />
         <div className={classes.paper}>
           {requestHistory.map(request => (
             <RequestHistoryCard key={request.id} requestText={request.text} requestData={request.data} requestValue={request.value}></RequestHistoryCard>
           ))}
         </div>
-      </Container>
+      </ContainerResquestHistory>
       <Footer></Footer>
     </div>
 

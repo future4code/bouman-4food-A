@@ -17,7 +17,7 @@ const Title = styled.p`
 function AppBarCart(props) {
   return (
     <StyledAppBar color="inherit">
-      <Title>Meu carrinho</Title>
+      <Title>{props.title}</Title>
     </StyledAppBar>
   );
 }

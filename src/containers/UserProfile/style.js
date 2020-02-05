@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Container from '@material-ui/core/Container';
+
 
 export const DivAddress = styled.div`
   width: 100%;
@@ -21,7 +23,7 @@ export const TitleAddress = styled.p`
   font-family: Roboto;
   font-size: 16px;
   letter-spacing: -0.39px;
-  color: #000000;
+  color: #b8b8b8;
   margin-left: 16px;
   margin-top: 20px;
 `;
@@ -36,12 +38,31 @@ export const FontProfile = styled.p`
   margin-left: 16px;
   margin-top: 8px;
 `;
+
+
+
 export const DivUserProfile = styled.div`
     display: block;
+    position: absolute;
+    top:50px;
+    left:0px; 
+    height:320px; 
+    right:0px;
+    overflow:hidden;
     
 `;
 export const LineHr = styled.hr`
   margin-left: 16px;
   margin-right: 16px;
   border: 0.7px solid black;
+`;
+
+export const ContainerResquestHistory = styled(Container)`
+  position: absolute;
+  top:320px;
+  bottom:50px;
+  left:0px;
+  right:0px;
+  overflow:scroll;
+ 
 `;
