@@ -5,7 +5,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import styled from "styled-components";
-import SearchIcon from '@material-ui/icons/Search';
+//import SearchIcon from '@material-ui/icons/Search';
 import { grey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
@@ -28,7 +28,7 @@ export function SearchInput(props) {
             id="input-with-icon-adornment"
             startAdornment={
                 <InputAdornment position="start">
-                <SearchIcon />
+                {/* <SearchIcon /> */}
                 </InputAdornment>
             }
             />

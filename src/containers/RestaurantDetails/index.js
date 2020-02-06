@@ -23,6 +23,11 @@ class RestaurantDetails extends Component {
   render() {
     return (
       <div>
+        <AppBarComponent
+          imageDisplay={true}
+          title="Restaurante"
+          //colocar a prop onClickButton
+        />
         <h1>RestaurantDetails</h1>
         <Button onClick={this.props.goToRestaurantFeed}>Va para RestaurantFeed</Button>
       </div>
