@@ -10,19 +10,19 @@ import AppBarComponent from "../../components/AppBarComponent"
 import { FormButton } from "../../components/Form"
 import Container from '@material-ui/core/Container';
 import {
-  DivAddress,
+  WrapperAddress,
   FontAddressTitle,
   FontAddressUser,
   TextCart,
   FreightPrice,
-  DivPrice,
+  WrapperPrice,
   TitleDivPrice,
   TotalPrice,
   FormOfPayment,
   LineHr,
-  DivRadioButton,
-  DivButtonConfirm,
-  DivMain
+  WrapperRadioButton,
+  WrapperButtonConfirm,
+  WrapperMain
 } from "./style";
 
 class Cart extends React.Component {
@@ -49,27 +49,27 @@ class Cart extends React.Component {
     return (
       <div>
         <AppBarComponent imageDisplay={false} title="Meu carrinho" />
-            <DivMain>
-              <DivAddress>
+            <WrapperMain>
+              <WrapperAddress>
                 <FontAddressTitle>Endereço de entrega</FontAddressTitle>
                 <FontAddressUser>Rua Alessandra Viera, 42</FontAddressUser>
-              </DivAddress>
+              </WrapperAddress>
               <Container  component="main" >
               <TextCart>Carrinho Vazio</TextCart>
               <FreightPrice>Frete R$0,00</FreightPrice>
-              <DivPrice>
+              <WrapperPrice>
                 <TitleDivPrice>SUBTOTAL</TitleDivPrice>
                 <TotalPrice>R$00,00</TotalPrice>
-              </DivPrice>
+              </WrapperPrice>
               <FormOfPayment>Forma de pagamento</FormOfPayment>
               <LineHr />
               <FormControl>
-                  <DivRadioButton name="payment" value={this.props.value} onChange={this.handleChange}>
+                  <WrapperRadioButton name="payment" value={this.props.value} onChange={this.handleChange}>
                     <FormControlLabel value="money" control={<Radio />} label="Dinheiro" />
                     <FormControlLabel value="creditCard" control={<Radio />} label="Cartão de crédito" />
-                  </DivRadioButton>
+                  </WrapperRadioButton>
               </FormControl>
-              <DivButtonConfirm>
+              <WrapperButtonConfirm>
                 <FormButton
                 style={
                   { 
@@ -82,9 +82,9 @@ class Cart extends React.Component {
                 >
                   Confirmar
                 </FormButton>
-              </DivButtonConfirm>
+              </WrapperButtonConfirm>
             </Container>
-          </DivMain>
+          </WrapperMain>
           <Footer></Footer>
       </div>
     );

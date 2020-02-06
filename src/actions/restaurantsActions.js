@@ -4,7 +4,7 @@ import { routes } from "../containers/Router"
 
 const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/FourFoodA"
 
-const token = window.localStorage.getItem("token")
+
 
 const setRestaurantAction = (restaurants) => ({
     type: "SET_RESTAURANTS_ACTION",
@@ -14,6 +14,8 @@ const setRestaurantAction = (restaurants) => ({
 })
 
 export const fetchRestaurants = () => async (dispatch) => {
+    const token = window.localStorage.getItem("token")
+
     try {
         const response = await axios.get(`${baseUrl}/restaurants`, {
             headers: {
@@ -27,6 +29,8 @@ export const fetchRestaurants = () => async (dispatch) => {
 }
 
 export const fetchRestaurantsDetails = (id) => async (dispatch) => {
+    const token = window.localStorage.getItem("token")
+
     try {
         const response = await axios.get(`${baseUrl}/restaurants/${id}`, {
             headers: {
