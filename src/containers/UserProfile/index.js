@@ -41,14 +41,14 @@ export function UserProfile(props) {
       <DivUserProfile>
         <EditAddress>
           <FontProfile>{props.users.name}</FontProfile>
-          <img src={IconEdit} />
+          <img onClick={props.goToEditUserProfile} src={IconEdit} />
         </EditAddress>
           <FontProfile>{props.users.email}</FontProfile>
           <FontProfile>{props.users.cpf}</FontProfile>
         <DivAddress>
           <EditAddress>
             <TitleAddress>Endereço cadastrado</TitleAddress>
-            <img src={IconEdit} />
+            <img onClick={props.goToEditUserAddress} src={IconEdit} />
           </EditAddress>
           <FontProfile>{props.users.address}</FontProfile>
         </DivAddress>
@@ -78,7 +78,9 @@ const mapDispatchToProps = (dispatch) => ({
   goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed)),
   goToCart: () => dispatch(push(routes.cart)), 
   fetchUsers: () => dispatch(getProfile()),
-  fecthOrders: () => dispatch(fetchOrdersHistory())
+  fecthOrders: () => dispatch(fetchOrdersHistory()),
+  goToEditUserAddress: () => dispatch(push(routes.editUserAddress)),
+  goToEditUserProfile: () => dispatch(push(routes.editUserProfile)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

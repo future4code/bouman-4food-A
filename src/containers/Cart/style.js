@@ -8,7 +8,7 @@ export const DivAddress = styled.div`
   background-color: #eeeeee;
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  margin-top: 0px;
 `;
 
 export const FontAddressTitle = styled.label`
@@ -141,4 +141,30 @@ export const DivButtonConfirm = styled.div`
   @media (height: 640px){
         margin-top: 35px;  
     }
+`;
+
+export const DivMain = styled.div`
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  /*iPhone 5/SE */ 
+  height: 474px;
+  /*Galaxy S5 */ 
+  @media (height: 640px){
+        height: 553px;  
+  }
+  /*iPhone X */ 
+  @media (height: 812px){
+        height: 800px;  
+  }
+  /*iPhone 6/7/8 plus*/ 
+  @media (height: 736px){
+        height: 653px;  
+  }
+  /*iPhone 6/7/8 */ 
+  @media (height: 667px){
+        height: 600px;  
+  }
+  overflow: hidden;
+  overflow-y: scroll;
 `;
