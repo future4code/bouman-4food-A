@@ -7,7 +7,7 @@ import Footer from "../../components/Footer";
 import FormControl from '@material-ui/core/FormControl';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import AppBarCart from "../../components/AppBarCart"
+import AppBarComponent from "../../components/AppBarComponent"
 import { FormButton } from "../../components/Form"
 import styled from "styled-components";
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -143,7 +143,7 @@ class Cart extends React.Component {
   render() {
     return (
       <div>
-        <AppBarCart />
+        <AppBarComponent imageDisplay={false} title="Meu carrinho" />
             <DivAddress>
               <FontAddressTitle>Endereço de entrega</FontAddressTitle>
               <FontAddressUser>Rua Alessandra Viera, 42</FontAddressUser>

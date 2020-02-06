@@ -21,7 +21,7 @@ const Card = styled.section`
 `
 
 const Image = styled.div`
-  height: 63.83%;
+  height: 120px;
 `
 
 const Img = styled.img`
@@ -62,13 +62,14 @@ export default function RestaurantCard(props) {
         {props.restaurants.map(restaurant => (
           <Card>
           <Image>
-            <Img src={restaurant.logoUrl} />
+            {/* se tivermos tempo, aprender o canvas */}
+            <Img src={props.restaurantImg} />
           </Image>
           <Info>
-            <Name>{restaurant.name}</Name>
+            <Name>{props.restaurantName}</Name>
             <OtherInfoContainer>
-            <OtherInfo>{restaurant.deliveryTime} min</OtherInfo>
-            <OtherInfo>Frete R${restaurant.shipping},00</OtherInfo>
+            <OtherInfo>{props.restaurantTime} - {props.restaurantTime+10} min</OtherInfo>
+            <OtherInfo>Frete R${props.restaurantShipping},00</OtherInfo>
             </OtherInfoContainer>
           </Info>
        </Card>

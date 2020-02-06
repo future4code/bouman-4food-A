@@ -23,11 +23,15 @@ export const StyledAppBar = styled(AppBar)`
   backdrop-filter: blur(10px);
   box-shadow: 0 0.5px 0 0 rgba(0, 0, 0, 0.25);
   background-color: #ffffff;
+  display: flex;
+  padding: 0px 10px;
+  flex-direction: row !important; /* tem alguma coisa que estava barrando o flex direction */
+  justify-content: space-around;
+  align-items: center;
 `;
 
 export const StyledBackImg = styled.img`
-  margin-right: 325px;
-  margin-top: 9px;
+  margin: 0;
 `;
 
 export const CreateUserContainer = styled.div`
