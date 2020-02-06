@@ -26,7 +26,8 @@ const Image = styled.div`
 
 const Img = styled.img`
   height: 100%;
-  width: 100%;
+  display: block;
+  margin: auto;
 `
 
 const Info = styled.div`
@@ -58,18 +59,20 @@ export default function RestaurantCard(props) {
   return (
     <div>
       <Container>
-        <Card>
+        {props.restaurants.map(restaurant => (
+          <Card>
           <Image>
-            <Img src="https://www.socialbauru.com.br/wp-content/uploads/2019/04/pizzadem-1240x540.jpg" />
+            <Img src={restaurant.logoUrl} />
           </Image>
           <Info>
-            <Name>Vinil Butantã</Name>
+            <Name>{restaurant.name}</Name>
             <OtherInfoContainer>
-            <OtherInfo>50 - 60 min</OtherInfo>
-            <OtherInfo>Frete R$6,00</OtherInfo>
+            <OtherInfo>{restaurant.deliveryTime} min</OtherInfo>
+            <OtherInfo>Frete R${restaurant.shipping},00</OtherInfo>
             </OtherInfoContainer>
           </Info>
        </Card>
+        ))}
       </Container>
     </div>
   )

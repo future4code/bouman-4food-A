@@ -42,3 +42,13 @@ export const FormButton = styled(Button)`
   margin: 8px 0;
 }
 `
+
+export const SearchSection = styled.div`
+  margin: 8px 16px;
+`
+
+export const SearchField = styled(TextField)`
+  &.search {
+    width: 100%;
+  }
+`
