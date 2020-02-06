@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router/";
 import Button from "@material-ui/core/Button";
-
-import TextField from "@material-ui/core/TextField";
 import AppBarComponent from "../../components/AppBarComponent";
-
 import Footer from "../../components/Footer";
 import RestaurantCard from "../../components/RestaurantCard";
 import ScrollableTabsButtonAuto from "../../components/ScrollableTab"
 import { fetchRestaurants } from '../../actions/restaurantsActions'
+import InputAdornment from '@material-ui/core/InputAdornment';
+import SearchIcon from "../../images/search.svg"
+import { SearchField, SearchSection } from "../../components/Form/"
 import styled from "styled-components";
 import Container from '@material-ui/core/Container';
 import SearchInput from './../../components/SearchInput'
@@ -36,36 +36,67 @@ const DivApp = styled.div`
 `;
 
 
-
 class RestaurantFeed extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { search: "" };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const token = window.localStorage.getItem("token")
-    if(token === null){
+    if (token === null) {
       this.props.goToLoginPage()
-    }else{
+    } else {
       this.props.getRestaurants()
     }
   }
 
-  render() {
-    
-    const { restaurants } = this.props
+  search = (e) => {
+    this.setState({ search: e.target.value })
+  }
 
+  searchRestaurant = () => {
+    const { restaurants } = this.props
+    return restaurants.filter(restaurant => {
+      if (restaurant.name.toLowerCase().includes(this.state.search.toLowerCase())) {
+        return true
+      }
+    })
+  }
+
+  render() {
+
+    const foundRestaurants = this.searchRestaurant()
     return (
       <div>
         <AppBarComponent title="iFuture" />
         <DivApp>
-          <SearchInput label="Restaurante"/>
-          <ScrollableTabsButtonAuto tabLabel={restaurants.category}/>
+          <SearchSection>
+            <SearchField
+              className="search"
+              variant="outlined"
+              placeholder="Restaurante"
+              onChange={this.search}
+              value={this.state.search}
+              InputProps={{
+                startAdornment:
+                  <InputAdornment position="start">
+                    <img src={SearchIcon} alt="Search" />
+                  </InputAdornment>
+              }} />
+            {/* <SearchInput label="Restaurante" /> */}
+          </SearchSection>
+          <ScrollableTabsButtonAuto />
         </DivApp>
         <ContainerRestaurantFeed>
-          {restaurants.map( restaurant => (
-            <RestaurantCard key={restaurant.id} restaurantTime={restaurant.deliveryTime} restaurantShipping={restaurant.shipping} restaurantName={restaurant.name} restaurantImg={restaurant.logoUrl} />
+          {foundRestaurants.map(restaurant => (
+            <RestaurantCard
+            id={restaurant.id}
+            restaurantTime={restaurant.deliveryTime}
+            restaurantShipping={restaurant.shipping}
+            restaurantName={restaurant.name}
+            restaurantImg={restaurant.logoUrl}
+            />
           ))}
           <Button onClick={this.props.goToRestaurantDetails}>Va para RestaurantDetails</Button>
         </ContainerRestaurantFeed>
@@ -75,8 +106,8 @@ class RestaurantFeed extends Component {
   }
 }
 
-const mapStateToProps = (state) =>({
 
+const mapStateToProps = (state) => ({
   restaurants: state.restaurants.allRestaurants
 })
 
