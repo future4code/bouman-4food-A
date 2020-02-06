@@ -3,7 +3,10 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router/";
 import Button from "@material-ui/core/Button";
-import AppBarComponent from "../../components/AppBar/AppBar";
+
+import TextField from "@material-ui/core/TextField";
+import AppBarComponent from "../../components/AppBarComponent";
+
 import Footer from "../../components/Footer";
 import RestaurantCard from "../../components/RestaurantCard";
 import ScrollableTabsButtonAuto from "../../components/ScrollableTab"

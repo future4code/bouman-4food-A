@@ -1,6 +1,6 @@
 import React from "react";
 import FormContainer from "../../components/FormContainer";
-import AppBarComponent from "../../components/AppBar/AppBar";
+import AppBarComponent from "../../components/AppBarComponent";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
@@ -86,7 +86,11 @@ export class EditUserAddress extends React.Component {
 
     return (
       <div>
-        <AppBarComponent onClickButton={this.props.goToProfile} />
+        <AppBarComponent
+          imageDisplay={true}
+          onClickButton={this.props.goToProfile}
+          title='Endereço'
+        />
         <FormContainer formInputs={formInputsData} buttonText="Salvar" />
       </div>
     );
