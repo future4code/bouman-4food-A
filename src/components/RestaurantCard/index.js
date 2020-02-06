@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import { fetchRestaurantsDetails } from "../../actions/restaurantsActions"
 
 const Container = styled.main`
   margin: auto;
@@ -26,8 +28,7 @@ const Image = styled.div`
 
 const Img = styled.img`
   height: 100%;
-  display: block;
-  margin: auto;
+  width: 100%;
 `
 
 const Info = styled.div`
@@ -55,12 +56,16 @@ const OtherInfo = styled.div`
   color: #b8b8b8;
 `
 
-export default function RestaurantCard(props) {
+function RestaurantCard(props) {
+
+  const goToRestaurantDetails = id => {
+    props.getRestaurantDetails(id)
+  }
+
   return (
     <div>
       <Container>
-        {props.restaurants.map(restaurant => (
-          <Card>
+        <Card onClick={() => { goToRestaurantDetails(props.id) }}>
           <Image>
             {/* se tivermos tempo, aprender o canvas */}
             <Img src={props.restaurantImg} />
@@ -68,13 +73,18 @@ export default function RestaurantCard(props) {
           <Info>
             <Name>{props.restaurantName}</Name>
             <OtherInfoContainer>
-            <OtherInfo>{props.restaurantTime} - {props.restaurantTime+10} min</OtherInfo>
-            <OtherInfo>Frete R${props.restaurantShipping},00</OtherInfo>
+              <OtherInfo>{props.restaurantTime} - {props.restaurantTime + 10} min</OtherInfo>
+              <OtherInfo>Frete R${props.restaurantShipping},00</OtherInfo>
             </OtherInfoContainer>
           </Info>
-       </Card>
-        ))}
+        </Card>
       </Container>
     </div>
   )
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  getRestaurantDetails: (id) => dispatch(fetchRestaurantsDetails(id)),
+})
+
+export default connect(null, mapDispatchToProps)(RestaurantCard);
