@@ -10,6 +10,7 @@ import {
   FormButton
 } from "../../components/Form";
 import { addAddress } from "../../actions/user";
+import AppBarComponent from "../../components/AppBarComponent";
 
 class SignUpPageAddress extends Component {
   constructor(props) {
@@ -72,6 +73,10 @@ class SignUpPageAddress extends Component {
   render() {
     return (
       <div>
+        <AppBarComponent
+          imageDisplay={true}
+          onClickButton={this.props.goToLoginPage}
+        />
         <FormDiv>
         <FormSection onSubmit={this.onClickToSaveAddress}>
           <FormTitle>Meu endereço</FormTitle>

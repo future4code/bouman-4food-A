@@ -10,7 +10,7 @@ import {
   CreateUserContainer,
   ImgContainer
 } from "../../style/styled";
-import AppBarComponent from "../../components/AppBar/AppBar";
+import AppBarComponent from "../../components/AppBarComponent";
 import FormContainer from "../../components/FormContainer";
 import { userSignup } from "../../actions/user";
 
@@ -122,7 +122,9 @@ class SignUpPage extends Component {
 
     return (
       <div>
-        <AppBarComponent onClickButton={this.props.goToLoginPage} />
+        <AppBarComponent
+          imageDisplay={true}
+          onClickButton={this.props.goToLoginPage} />
         <ImgContainer>
           <StyledImg src={FourFood} alt="Logo" />
           <h4>Cadastrar</h4>
