@@ -32,6 +32,7 @@ export function Footer(props) {
   const HomeIcon = currentRoute === "/restaurantFeed" ? HomePageIconActive : HomePageIcon;
   const CartIcon = currentRoute === "/cart" ? ShoppingIconActive : ShoppingIcon;
   const UserIcon = currentRoute === "/userProfile" ? AvatarIconActive : AvatarIcon;
+  
   return (
     <ContainerFooter color="primary">
       <img onClick={props.goToRestaurantFeed} src={HomeIcon} />
