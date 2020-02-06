@@ -2,13 +2,11 @@ import React, { Component, useEffect } from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router/";
-import Button from "@material-ui/core/Button";
-
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { RequestHistoryCard } from './../../components/RequestHistoryCard'
-import { Footer } from "../../components/Footer";
-import { getProfile } from "../../actions/user"
+import Footer from "../../components/Footer";
+import { getProfile, fetchOrdersHistory } from "../../actions/user"
 import {
   DivAddress,
   TitleAddress,
@@ -29,37 +27,12 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const requestHistory = [
-  {
-    id: "1",
-    text: "Hamburguer Vila Maria",
-    data: "10/10/2019",
-    value: "23,00"
-  },
-  {
-    id: "2",
-    text: "Hamburguer da Vale",
-    data: "03/04/2019",
-    value: "23,00"
-  }, {
-    id: "3",
-    text: "Macarrão na Chapa da Teet",
-    data: "04/03/2019",
-    value: "10,00"
-  },
-  {
-    id: "4",
-    text: "Macarrão na Chapa da Teet",
-    data: "04/03/2019",
-    value: "10,00"
-  },
-]
-
 export function UserProfile(props) {
   const classes = useStyles();
 
   useEffect(() => {
     props.fetchUsers();
+    props.fecthOrders();
   }, [])
 
   return (
@@ -85,9 +58,9 @@ export function UserProfile(props) {
       <ContainerResquestHistory  component="main" maxWidth="xs">
        <CssBaseline />
         <div className={classes.paper}>
-          {requestHistory.map(request => (
+          {props.orders===[]? props.orders.map(request => (
             <RequestHistoryCard key={request.id} requestText={request.text} requestData={request.data} requestValue={request.value}></RequestHistoryCard>
-          ))}
+          )):<p>Você não realizou nenhum pedido</p>}
         </div>
       </ContainerResquestHistory>
       <Footer></Footer>
@@ -97,13 +70,15 @@ export function UserProfile(props) {
 }
 
 const mapStateToProps = state => ({
-  users: state.users.allUsers
+  users: state.users.allUsers,
+  orders: state.users.allOrders
 })
 
 const mapDispatchToProps = (dispatch) => ({
   goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed)),
-  goToCart: () => dispatch(push(routes.cart)),
-  fetchUsers: () => dispatch(getProfile())
+  goToCart: () => dispatch(push(routes.cart)), 
+  fetchUsers: () => dispatch(getProfile()),
+  fecthOrders: () => dispatch(fetchOrdersHistory())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
