@@ -25,3 +25,4 @@ export const fetchRestaurants = () => async(dispatch) =>{
         window.alert(error.response.data.message)
     }
 }   
+

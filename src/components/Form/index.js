@@ -27,7 +27,7 @@ export const FormTitle = styled.div`
 
 export const FormInput = styled(TextField)`
   &.form {
-    width: 100%
+    width: 100%;
     margin: 8px 0;
   }
 `

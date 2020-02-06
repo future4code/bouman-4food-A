@@ -21,7 +21,7 @@ const Card = styled.section`
 `
 
 const Image = styled.div`
-  height: 63.83%;
+  height: 120px;
 `
 
 const Img = styled.img`
@@ -60,13 +60,14 @@ export default function RestaurantCard(props) {
       <Container>
         <Card>
           <Image>
-            <Img src="https://www.socialbauru.com.br/wp-content/uploads/2019/04/pizzadem-1240x540.jpg" />
+            {/* se tivermos tempo, aprender o canvas */}
+            <Img src={props.restaurantImg} />
           </Image>
           <Info>
-            <Name>Vinil Butantã</Name>
+            <Name>{props.restaurantName}</Name>
             <OtherInfoContainer>
-            <OtherInfo>50 - 60 min</OtherInfo>
-            <OtherInfo>Frete R$6,00</OtherInfo>
+            <OtherInfo>{props.restaurantTime} - {props.restaurantTime+10} min</OtherInfo>
+            <OtherInfo>Frete R${props.restaurantShipping}</OtherInfo>
             </OtherInfoContainer>
           </Info>
        </Card>
