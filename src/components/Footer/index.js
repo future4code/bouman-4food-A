@@ -1,7 +1,10 @@
 import React from 'react';
 import AvatarIcon from './../../images/avatar.svg'
+import AvatarIconActive from './../../images/avataractive.svg'
 import HomePageIcon from './../../images/homepage.svg'
+import HomePageIconActive from './../../images/homepageactive.svg'
 import ShoppingIcon from './../../images/shopping-cart.svg'
+import ShoppingIconActive from './../../images/shopping-cartactive.svg'
 import styled from "styled-components"
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
@@ -25,14 +28,23 @@ const ContainerFooter = styled.div`
 
 export function Footer(props) {
 
+  const {currentRoute} = props
+  const HomeIcon = currentRoute === "/restaurantFeed" ? HomePageIconActive : HomePageIcon;
+  const CartIcon = currentRoute === "/cart" ? ShoppingIconActive : ShoppingIcon;
+  const UserIcon = currentRoute === "/userProfile" ? AvatarIconActive : AvatarIcon;
+  
   return (
-    <ContainerFooter>
-      <img onClick={props.goToRestaurantFeed} src={HomePageIcon} />
-      <img onClick={props.goToCart} src={ShoppingIcon} />
-      <img onClick={props.goToUserProfile} src={AvatarIcon} />  
+    <ContainerFooter color="primary">
+      <img onClick={props.goToRestaurantFeed} src={HomeIcon} />
+      <img onClick={props.goToCart} src={CartIcon} />
+      <img onClick={props.goToUserProfile} src={UserIcon} />  
     </ContainerFooter>
   );
 }
+
+const mapStateToProps = (state) => ({
+  currentRoute: state.router.location.pathname,
+})
 
 const mapDispatchToProps = (dispatch) => ({
   goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed)),
@@ -40,4 +52,4 @@ const mapDispatchToProps = (dispatch) => ({
   goToUserProfile: () => dispatch(push(routes.userProfile)),
 })
 
-export default connect(null, mapDispatchToProps)(Footer)
+export default connect(mapStateToProps, mapDispatchToProps)(Footer)
