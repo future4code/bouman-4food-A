@@ -75,7 +75,7 @@ class SignUpPageAddress extends Component {
       <div>
         <AppBarComponent
           imageDisplay={true}
-          onClickButton={this.props.goToLoginPage}
+          onClickButton={this.props.goToLoginPage} /*verificar */
         />
         <FormDiv>
         <FormSection onSubmit={this.onClickToSaveAddress}>
