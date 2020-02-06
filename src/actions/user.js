@@ -60,6 +60,13 @@ const getUsers = (users)=>({
     }
 })
 
+export const getOrderHistory = (orders)=>({
+    type: "GET_ALL_ORDERS",
+    payload:{
+        orders,
+    }
+})
+
 export const getProfile = () => async (dispatch)=>{
     const token = window.localStorage.getItem("token")
 
@@ -69,4 +76,15 @@ export const getProfile = () => async (dispatch)=>{
         }
     })
     dispatch(getUsers(response.data.user))
+}
+
+export const fetchOrdersHistory = () => async (dispatch) => {
+    const token = window.localStorage.getItem("token")
+
+    const response = await axios.get(`${baseUrl}/orders/history`, {
+        headers:{
+            auth: token,
+        }
+    })
+    dispatch(getOrderHistory(response.data.orders))
 }
