@@ -8,10 +8,10 @@ import { RequestHistoryCard } from './../../components/RequestHistoryCard'
 import Footer from "../../components/Footer";
 import { getProfile, fetchOrdersHistory } from "../../actions/user"
 import {
-  DivAddress,
+  WrapperAddress,
   TitleAddress,
   FontProfile,
-  DivUserProfile,
+  WrapperUserProfile,
   EditAddress,
   LineHr,
   ContainerResquestHistory,
@@ -38,23 +38,23 @@ export function UserProfile(props) {
   return (
     <div>
       <AppBarCart title="Meu Perfil"/>
-      <DivUserProfile>
+      <WrapperUserProfile>
         <EditAddress>
           <FontProfile>{props.users.name}</FontProfile>
           <img onClick={props.goToEditUserProfile} src={IconEdit} />
         </EditAddress>
           <FontProfile>{props.users.email}</FontProfile>
           <FontProfile>{props.users.cpf}</FontProfile>
-        <DivAddress>
+        <WrapperAddress>
           <EditAddress>
             <TitleAddress>Endereço cadastrado</TitleAddress>
             <img onClick={props.goToEditUserAddress} src={IconEdit} />
           </EditAddress>
           <FontProfile>{props.users.address}</FontProfile>
-        </DivAddress>
+        </WrapperAddress>
         <FontProfile>Histórico de pedidos</FontProfile>
         <LineHr />
-      </DivUserProfile>
+      </WrapperUserProfile>
       <ContainerResquestHistory  component="main" maxWidth="xs">
        <CssBaseline />
         <div className={classes.paper}>

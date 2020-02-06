@@ -2,7 +2,7 @@ import styled from "styled-components";
 import RadioGroup from '@material-ui/core/RadioGroup';
 
 
-export const DivAddress = styled.div`
+export const WrapperAddress = styled.div`
   width: 100%;
   height: 76px;
   background-color: #eeeeee;
@@ -65,7 +65,7 @@ export const FreightPrice = styled.p`
   margin-top: 83px;
 `;
 
-export const DivPrice = styled.div`
+export const WrapperPrice = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -112,7 +112,7 @@ export const LineHr = styled.hr`
   border: 0.7px solid black;
 `;
 
-export const DivRadioButton = styled(RadioGroup)`
+export const WrapperRadioButton = styled(RadioGroup)`
   margin-left: 16px;
   width: 360px;
   height: 100px;
@@ -120,7 +120,7 @@ export const DivRadioButton = styled(RadioGroup)`
   margin-right: 16px;
 `;
 
-export const DivButtonConfirm = styled.div`
+export const WrapperButtonConfirm = styled.div`
   margin-left: 16px;
   margin-right: 16px;
   /*iPhone 6/7/8 plus*/ 
@@ -143,7 +143,7 @@ export const DivButtonConfirm = styled.div`
     }
 `;
 
-export const DivMain = styled.div`
+export const WrapperMain = styled.div`
   position: absolute;
   left: 0px;
   right: 0px;

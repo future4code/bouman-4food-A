@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Container from '@material-ui/core/Container';
 
 
-export const DivAddress = styled.div`
+export const WrapperAddress = styled.div`
   width: 100%;
   height: 90px;
   background-color: #eeeeee;
@@ -41,7 +41,7 @@ export const FontProfile = styled.p`
 
 
 
-export const DivUserProfile = styled.div`
+export const WrapperUserProfile = styled.div`
     display: block;
     position: absolute;
     top:50px;
