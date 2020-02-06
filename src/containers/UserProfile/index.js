@@ -31,8 +31,14 @@ export function UserProfile(props) {
   const classes = useStyles();
 
   useEffect(() => {
-    props.fetchUsers();
-    props.fecthOrders();
+    const token = window.localStorage.getItem("token")
+    if(token === null){
+      props.goToLoginPage()
+    }else{
+      props.fetchUsers();
+      props.fecthOrders();
+    }
+    
   }, [])
 
   return (
@@ -81,6 +87,7 @@ const mapDispatchToProps = (dispatch) => ({
   fecthOrders: () => dispatch(fetchOrdersHistory()),
   goToEditUserAddress: () => dispatch(push(routes.editUserAddress)),
   goToEditUserProfile: () => dispatch(push(routes.editUserProfile)),
+  goToLoginPage: () => dispatch(push(routes.loginPage))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
