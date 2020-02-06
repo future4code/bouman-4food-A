@@ -35,6 +35,7 @@ export const fetchRestaurantsDetails = (id) => async (dispatch) => {
         })
         console.log(response.data)
         dispatch(setRestaurantDetails(response.data))
+        dispatch(push(routes.restaurantDetails))
     } catch (err) {
         window.alert(err.response.data.message)
     }
