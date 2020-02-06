@@ -43,7 +43,7 @@ const LogoFutureEats = styled.img `
 function InitialScreen(props){
     return( 
         <RectangleMain>
-            <LogoFutureEats src={LogoFourFood} onchange={setTimeout(props.goToLoginPage, 5000)} />
+            <LogoFutureEats src={LogoFourFood} onchange={setTimeout(props.goToLoginPage, 3000)} />
         </RectangleMain>
 
     )
