@@ -13,7 +13,6 @@ import SearchIcon from "../../images/search.svg"
 import { SearchField, SearchSection } from "../../components/Form/"
 import styled from "styled-components";
 import Container from '@material-ui/core/Container';
-import SearchInput from './../../components/SearchInput'
 
 
 const ContainerRestaurantFeed = styled(Container)`
@@ -58,8 +57,14 @@ class RestaurantFeed extends Component {
   searchRestaurant = () => {
     const { restaurants } = this.props
     return restaurants.filter(restaurant => {
-      if (restaurant.name.toLowerCase().includes(this.state.search.toLowerCase())) {
-        return true
+      if (this.props.category === "Todos"){
+        if (restaurant.name.toLowerCase().includes(this.state.search.toLowerCase())){
+          return true
+        }
+      } else {
+        if (restaurant.name.toLowerCase().includes(this.state.search.toLowerCase()) && restaurant.category === this.props.category) {
+          return true
+        }
       }
     })
   }
@@ -84,9 +89,8 @@ class RestaurantFeed extends Component {
                     <img src={SearchIcon} alt="Search" />
                   </InputAdornment>
               }} />
-            {/* <SearchInput label="Restaurante" /> */}
           </SearchSection>
-          <ScrollableTabsButtonAuto />
+          <ScrollableTabsButtonAuto/>
         </DivApp>
         <ContainerRestaurantFeed>
           {foundRestaurants.map(restaurant => (
@@ -108,7 +112,9 @@ class RestaurantFeed extends Component {
 
 
 const mapStateToProps = (state) => ({
-  restaurants: state.restaurants.allRestaurants
+  restaurants: state.restaurants.allRestaurants,
+  category: state.restaurants.category
+
 })
 
 const mapDispatchToProps = (dispatch) => ({

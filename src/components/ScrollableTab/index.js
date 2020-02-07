@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { setRestaurantCategory } from '../../actions/restaurantsActions'
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -45,12 +47,38 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ScrollableTabsButtonAuto(props) {
+function switchIndex(index){
+  switch(index) {
+    case 1:
+      return 'Asiática'
+    case 2:
+      return 'Árabe'
+    case 3:
+      return 'Baiana'
+    case 4:
+      return 'Carnes'
+    case 5:
+      return 'Hamburguer'
+    case 6:
+      return 'Italiana'
+    case 7:
+      return 'Petiscos'
+    case 8:
+      return 'Sorvetes'
+    case 0:
+      return 'Todos'
+    default:
+      return window.alert("erro")
+    }
+}
+
+export function ScrollableTabsButtonAuto(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    props.getRestaurantsCategory(switchIndex(newValue))
   };
 
   return (
@@ -65,18 +93,24 @@ export default function ScrollableTabsButtonAuto(props) {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          
-          <Tab label="Asiática" {...a11yProps(0)} />
-          <Tab label="Árabe" {...a11yProps(1)} />
-          <Tab label="Baiana" {...a11yProps(2)} />
-          <Tab label="Carnes" {...a11yProps(3)} />
-          <Tab label="Hamburguer" {...a11yProps(4)} />
-          <Tab label="Italiana" {...a11yProps(5)} />
-          <Tab label="Petiscos" {...a11yProps(6)} />
-          <Tab label="Sorvetes" {...a11yProps(7)} />
+          <Tab label="Todos" {...a11yProps(0)} />
+          <Tab label="Asiática" {...a11yProps(1)} />
+          <Tab label="Árabe" {...a11yProps(2)} />
+          <Tab label="Baiana" {...a11yProps(3)} />
+          <Tab label="Carnes" {...a11yProps(4)} />
+          <Tab label="Hamburguer" {...a11yProps(5)} />
+          <Tab label="Italiana" {...a11yProps(6)} />
+          <Tab label="Petiscos" {...a11yProps(7)} />
+          <Tab label="Sorvetes" {...a11yProps(8)} />
         </Tabs>
       </AppBar>
       
     </div>
   );
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  getRestaurantsCategory: (category) => dispatch(setRestaurantCategory(category)),
+})
+
+export default connect(null, mapDispatchToProps)(ScrollableTabsButtonAuto);

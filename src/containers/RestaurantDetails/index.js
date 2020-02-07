@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { push, goBack } from "connected-react-router";
 import { routes } from "../Router/";
+
 import AppBarComponent from '../../components/AppBarComponent';
 import styled from 'styled-components';
 import { fetchRestaurantsDetails } from "../../actions/restaurantsActions";
@@ -71,6 +72,7 @@ const OtherInfo = styled.div`
   margin: 2px 0;
 `
 
+
 class RestaurantDetails extends Component {
   constructor(props) {
     super(props);
@@ -111,6 +113,7 @@ class RestaurantDetails extends Component {
           onClickButton={this.props.goBackPage}
         />
 
+
         <Container>
           <Card>
             {/* se tivermos tempo, aprender o canvas */}
@@ -132,6 +135,7 @@ class RestaurantDetails extends Component {
         </Container>
 
         <COMPONENT itemData={categoryItens} />
+
       </div>
     );
   }
