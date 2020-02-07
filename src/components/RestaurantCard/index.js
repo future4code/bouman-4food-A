@@ -84,7 +84,7 @@ function RestaurantCard(props) {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  getRestaurantDetails: (id) => dispatch(fetchRestaurantsDetails(id)),
+  getRestaurantDetails: (restaurantId) => dispatch(fetchRestaurantsDetails(restaurantId)),
 })
 
 export default connect(null, mapDispatchToProps)(RestaurantCard);

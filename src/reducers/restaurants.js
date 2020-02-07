@@ -1,7 +1,8 @@
 const initialState = {
     allRestaurants: [],
-    restaurantDetails: [],
+    restaurantDetails: undefined,
     category: "Todos",
+    selectedRestaurantId: "",
 }
 
 const restaurants = (state = initialState, action) => {
@@ -12,6 +13,8 @@ const restaurants = (state = initialState, action) => {
             return { ...state, restaurantDetails: action.payload.details}
         case "SET_RESTAURANT_CATEGORY":
             return { ...state, category: action.payload.category}
+        case "SET_RESTAURANT_ID":
+            return {...state, restaurantId: action.payload.restaurantId}
         default:
             return state
     }

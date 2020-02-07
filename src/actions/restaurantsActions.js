@@ -27,7 +27,7 @@ export const fetchRestaurants = () => async (dispatch) => {
     }
 }
 
-export const fetchRestaurantsDetails = (id) => async (dispatch) => {
+export const fetchRestaurantsDetails = (restaurantId) => async (dispatch) => {
     const token = window.localStorage.getItem("token")
     const requestHeader = {
         headers: {
@@ -35,7 +35,7 @@ export const fetchRestaurantsDetails = (id) => async (dispatch) => {
         }
     }
     try {
-        const response = await axios.get(`${baseUrl}/restaurants/${id}`, requestHeader)
+        const response = await axios.get(`${baseUrl}/restaurants/${restaurantId}`, requestHeader)
         dispatch(setRestaurantDetails(response.data.restaurant))
         dispatch(push(routes.restaurantDetails))
     } catch (err) {
@@ -54,5 +54,12 @@ export const setRestaurantCategory = (category) => ({
     type: "SET_RESTAURANT_CATEGORY",
     payload: {
         category
+    }
+})
+
+export const setRestaurantId = (restaurantId) => ({
+    type: "SET_RESTAURANT_ID",
+    payload: {
+        restaurantId
     }
 })
