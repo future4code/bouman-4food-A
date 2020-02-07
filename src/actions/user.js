@@ -86,14 +86,14 @@ export const fetchOrdersHistory = () => async (dispatch) => {
     dispatch(getOrderHistory(response.data.orders))
 }
 
-export const getFullAddress = (address) =>({
+export const getFullAddress = (address) => ({
     type: "GET_ALL_ADDRESS",
     payload: {
         address,
     }
 })
 
-export const fetchFullAddress = () => async (dispatch)=>{
+export const fetchFullAddress = () => async (dispatch) => {
     const token = window.localStorage.getItem("token")
 
     const response = await axios.get(`${baseUrl}/profile/address`, {
@@ -102,4 +102,19 @@ export const fetchFullAddress = () => async (dispatch)=>{
         }
     })
     dispatch(getFullAddress(response.data.address))
+}
+
+export const updateProfile = (form) => async (dispatch) => {
+    const token = window.localStorage.getItem("token")
+    const requestHeader = {
+        headers: {
+            auth: token,
+        }
+    }
+    try {
+        await axios.put(`${baseUrl}/profile`, form, requestHeader)
+        dispatch(push(routes.userProfile))
+    } catch (e) {
+        window.alert(e.response.data.message)
+    }
 }

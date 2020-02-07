@@ -4,25 +4,26 @@ import AppBarComponent from '../../components/AppBarComponent';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { routes } from '../Router';
+import { updateProfile } from '../../actions/user';
 
-export class EditUserProfile extends React.Component{
+export class EditUserProfile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       form: {
-        nome: '',
-        email: '',
-        cpf: '',
+        name: this.props.users.name,
+        email: this.props.users.email,
+        cpf: this.props.users.cpf,
       }
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const token = window.localStorage.getItem("token")
-    if(token === null){
+    if (token === null) {
       this.props.goToLoginPage()
-    }else{
-      
+    } else {
+
     }
   }
 
@@ -35,11 +36,11 @@ export class EditUserProfile extends React.Component{
     const formInputsData = [
       {
         label: 'Nome',
-        name: 'nome',
+        name: 'name',
         placeholder: "Nome",
         autoComplete: 'name',
         //autofocus: ,
-        value: this.state.form.nome,
+        value: this.state.form.name,
         onChange: this.handleInputChange,
       },
       {
@@ -58,7 +59,7 @@ export class EditUserProfile extends React.Component{
         onChange: this.handleInputChange,
       },
     ]
-    
+
     return (
       <div>
         <AppBarComponent
@@ -69,17 +70,24 @@ export class EditUserProfile extends React.Component{
         <FormContainer
           formInputs={formInputsData}
           buttonText="Salvar"
+          onClickCriar={this.props.updateProfile}
+          form={this.state.form}
         />
       </div>
     )
   }
 }
 
+const mapStateToProps = state => ({
+  users: state.users.allUsers
+})
+
 function mapDispatchToProps(dispatch) {
   return {
     goToProfile: () => dispatch(push(routes.userProfile)),
-    goToLoginPage: () => dispatch(push(routes.loginPage))
+    goToLoginPage: () => dispatch(push(routes.loginPage)),
+    updateProfile: (form) => dispatch(updateProfile(form))
   }
 }
 
-export default connect(null, mapDispatchToProps)(EditUserProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(EditUserProfile);
