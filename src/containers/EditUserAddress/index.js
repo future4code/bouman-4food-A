@@ -66,7 +66,6 @@ export class EditUserAddress extends React.Component {
       }
 
       this.props.onSaveAddress(addressData)
-      console.log(this.state.form)
       
     } else {
       window.alert("Insira dados válidos.")

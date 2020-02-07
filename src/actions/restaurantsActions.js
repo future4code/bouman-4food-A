@@ -5,11 +5,13 @@ import { routes } from "../containers/Router"
 const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/FourFoodA"
 
 
-const token = window.localStorage.getItem("token")
 
 
 
 export const setRestaurantAction = (restaurants) => ({
+
+const setRestaurantAction = (restaurants) => ({
+
     type: "SET_RESTAURANTS_ACTION",
     payload: {
         restaurants,
@@ -23,7 +25,6 @@ export const fetchRestaurants = () => async (dispatch) => {
             auth: token
         }
     }
-
     try {
         const response = await axios.get(`${baseUrl}/restaurants`, requestHeader)
         dispatch(setRestaurantAction(response.data.restaurants))
@@ -41,7 +42,6 @@ export const fetchRestaurantsDetails = (id) => async (dispatch) => {
     }
     try {
         const response = await axios.get(`${baseUrl}/restaurants/${id}`, requestHeader)
-        //console.log(response.data)
         dispatch(setRestaurantDetails(response.data.restaurant))
         dispatch(push(routes.restaurantDetails))
     } catch (err) {
