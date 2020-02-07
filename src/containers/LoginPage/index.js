@@ -127,7 +127,7 @@ export function LoginPage(props) {
 
 
 
-const mapDispatchToProps = (dispatch) =>({
+export const mapDispatchToProps = (dispatch) =>({
   goToSignUp: () => dispatch(push(routes.signupPage)),
   goToRestaurantFeed: () => dispatch(push(routes.restaurantFeed)),
   login: (email, password)=> dispatch(userLogin(email, password))

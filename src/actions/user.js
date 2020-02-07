@@ -2,7 +2,7 @@ import axios from "axios";
 import { push } from "connected-react-router";
 import { routes } from "../containers/Router"
 
-const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/FourFoodA"
+export const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/FourFoodA"
 
 
 export const userLogin = (email, password) => async (dispatch) => {
@@ -20,7 +20,7 @@ export const userLogin = (email, password) => async (dispatch) => {
             dispatch(push(routes.restaurantFeed))
         }
     } catch (error) {
-        window.alert(error.response.data.message)
+        window.alert("Usuário não encontrado")
     }
 }
 
@@ -30,7 +30,7 @@ export const userSignup = (newUserData) => async (dispatch) => {
         window.localStorage.setItem("token", response.data.token)
         dispatch(push(routes.signupPageAddress))
     } catch (e) {
-        window.alert(e.response.data.message)
+        window.alert("Erro no Signup")
     }
 }
 
@@ -46,7 +46,7 @@ export const addAddress = (addressData) => async (dispatch) => {
         window.localStorage.setItem("token", response.data.token)
         dispatch(push(routes.restaurantFeed))
     } catch (e) {
-        window.alert(e.response.data.message)
+        window.alert("Endereço já cadastrado para esse usuário")
     }
 }
 

@@ -5,7 +5,13 @@ import { routes } from "../containers/Router"
 const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/FourFoodA"
 
 
+
+
+
+export const setRestaurantAction = (restaurants) => ({
+
 const setRestaurantAction = (restaurants) => ({
+
     type: "SET_RESTAURANTS_ACTION",
     payload: {
         restaurants,
@@ -43,7 +49,7 @@ export const fetchRestaurantsDetails = (restaurantId) => async (dispatch) => {
     }
 }
 
-const setRestaurantDetails = (details) => ({
+export const setRestaurantDetails = (details) => ({
     type: "SET_RESTAURANT_DETAILS",
     payload: {
         details
