@@ -6,7 +6,7 @@ import styled from "styled-components";
 import LogoFourFood from "../../images/logo-future-eats.svg";
 
 
-const RectangleMain = styled.div`
+export const RectangleMain = styled.div`
     max-width: 420px;
         /*iPhone 6/7/8*/
     height: 667px;
@@ -49,7 +49,7 @@ function InitialScreen(props){
     )
 }
 
- const mapDispatchToProps = (dispatch) =>({
+export const mapDispatchToProps = (dispatch) =>({
      goToLoginPage: () => dispatch(push(routes.loginPage))
  })
 
