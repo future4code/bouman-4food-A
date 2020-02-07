@@ -1,6 +1,7 @@
 const initialState = {
     allUsers: [],
-    allOrders: []
+    allOrders: [],
+    allAddress: [],
 }
 
 const users = (state = initialState, action)=>{
@@ -9,6 +10,8 @@ const users = (state = initialState, action)=>{
             return{...state, allUsers: action.payload.users}
         case "GET_ALL_ORDERS":
             return{...state, allOrders: action.payload.orders}
+        case "GET_ALL_ADDRESS":
+                return{...state, allAddress: action.payload.address}
         default:
             return state
     }

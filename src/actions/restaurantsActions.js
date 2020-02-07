@@ -13,6 +13,7 @@ const setRestaurantAction = (restaurants) => ({
 
 export const fetchRestaurants = () => async (dispatch) => {
     const token = window.localStorage.getItem("token")
+
     try {
         const response = await axios.get(`${baseUrl}/restaurants`, {
             headers: {
@@ -27,6 +28,7 @@ export const fetchRestaurants = () => async (dispatch) => {
 
 export const fetchRestaurantsDetails = (id) => async (dispatch) => {
     const token = window.localStorage.getItem("token")
+    
     try {
         const response = await axios.get(`${baseUrl}/restaurants/${id}`, {
             headers: {

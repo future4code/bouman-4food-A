@@ -6,13 +6,10 @@ const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/FourFoodA"
 
 
 export const userLogin = (email, password) => async (dispatch) => {
-
-
     const login = {
         email,
         password,
     }
-
     try {
         const response = await axios.post(`${baseUrl}/login`, login)
         window.localStorage.setItem("token", response.data.token)
@@ -53,17 +50,10 @@ export const addAddress = (addressData) => async (dispatch) => {
     }
 }
 
-const getUsers = (users) => ({
+export const getUsers = (users) => ({
     type: "GET_ALL_USERS",
     payload: {
         users,
-    }
-})
-
-export const getOrderHistory = (orders) => ({
-    type: "GET_ALL_ORDERS",
-    payload: {
-        orders,
     }
 })
 
@@ -78,6 +68,13 @@ export const getProfile = () => async (dispatch) => {
     dispatch(getUsers(response.data.user))
 }
 
+export const getOrderHistory = (orders) => ({
+    type: "GET_ALL_ORDERS",
+    payload: {
+        orders,
+    }
+})
+
 export const fetchOrdersHistory = () => async (dispatch) => {
     const token = window.localStorage.getItem("token")
 
@@ -87,4 +84,22 @@ export const fetchOrdersHistory = () => async (dispatch) => {
         }
     })
     dispatch(getOrderHistory(response.data.orders))
+}
+
+export const getFullAddress = (address) =>({
+    type: "GET_ALL_ADDRESS",
+    payload: {
+        address,
+    }
+})
+
+export const fetchFullAddress = () => async (dispatch)=>{
+    const token = window.localStorage.getItem("token")
+
+    const response = await axios.get(`${baseUrl}/profile/address`, {
+        headers: {
+            auth: token,
+        }
+    })
+    dispatch(getFullAddress(response.data.address))
 }
