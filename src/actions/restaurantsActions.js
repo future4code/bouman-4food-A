@@ -6,6 +6,12 @@ const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/FourFoodA"
 
 const token = window.localStorage.getItem("token")
 
+const requestHeader = {
+    headers: {
+        auth: token
+    }
+}
+
 const setRestaurantAction = (restaurants) => ({
     type: "SET_RESTAURANTS_ACTION",
     payload: {
@@ -15,11 +21,7 @@ const setRestaurantAction = (restaurants) => ({
 
 export const fetchRestaurants = () => async (dispatch) => {
     try {
-        const response = await axios.get(`${baseUrl}/restaurants`, {
-            headers: {
-                auth: token
-            }
-        })
+        const response = await axios.get(`${baseUrl}/restaurants`, requestHeader)
         dispatch(setRestaurantAction(response.data.restaurants))
     } catch (error) {
         window.alert(error.response.data.message)
@@ -28,13 +30,9 @@ export const fetchRestaurants = () => async (dispatch) => {
 
 export const fetchRestaurantsDetails = (id) => async (dispatch) => {
     try {
-        const response = await axios.get(`${baseUrl}/restaurants/${id}`, {
-            headers: {
-                auth: token
-            }
-        })
-        console.log(response.data)
-        dispatch(setRestaurantDetails(response.data))
+        const response = await axios.get(`${baseUrl}/restaurants/${id}`, requestHeader)
+        //console.log(response.data)
+        dispatch(setRestaurantDetails(response.data.restaurant))
         dispatch(push(routes.restaurantDetails))
     } catch (err) {
         window.alert(err.response.data.message)

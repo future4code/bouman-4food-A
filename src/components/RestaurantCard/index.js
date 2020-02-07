@@ -60,6 +60,7 @@ function RestaurantCard(props) {
 
   const goToRestaurantDetails = id => {
     props.getRestaurantDetails(id)
+    console.log(id)
   }
 
   return (
