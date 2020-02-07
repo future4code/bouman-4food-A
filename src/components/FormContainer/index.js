@@ -30,6 +30,11 @@ const useStyles = makeStyles(theme => ({
 export function FormContainer(props) {
   const classes = useStyles();
  
+  const preventDefault = (e) => {
+    e.preventDefault()
+    props.onClickCriar(props.form)
+  }
+
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -46,7 +51,7 @@ export function FormContainer(props) {
                 name={input.name}
                 placeholder={input.placeholder}
                 autoComplete={input.autoComplete}
-                autofocus={input.autoFocus}
+                autoFocus={input.autoFocus}
                 value={input.value}
                 onChange={input.onChange}
                 type={input.type}
@@ -58,7 +63,7 @@ export function FormContainer(props) {
               variant="contained"
               style={{ background:"#e8222e" }}
               className={classes.submit}
-              onClick={props.onClickCriar}
+              onClick={preventDefault}
             >
               {props.buttonText}
             </Button>
