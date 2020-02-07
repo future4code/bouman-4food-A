@@ -5,7 +5,7 @@ import Divider from '@material-ui/core/Divider';
 
 const RestaurantItemCardContainer = styled.div`
     width: 328px;
-    height: 160px;
+
     display: flex;
     flex-direction:column;
 `;
@@ -90,16 +90,22 @@ const ItemPrice =styled.p`
 export function RestaurantItemCard(props) {
     return (
     <RestaurantItemCardContainer>
-        <ItemCategory>Categoria</ItemCategory>
+        <ItemCategory>{props.itemData.category}</ItemCategory>
         <HR></HR>
-        <CardContainer>
-            <StyledImg src={burguerImg}/>
-            <InfoContainer>
-                <ItemName>NameTeste</ItemName>
-                <ItemNDescription>Description teste teste</ItemNDescription>
-                <ItemPrice>R$20,00</ItemPrice>
-            </InfoContainer>
-        </CardContainer>
+        {props.itemData.itens.map( item => {
+            return (
+                <CardContainer>
+                    <StyledImg src={item.photoUrl}/>
+                    <InfoContainer>
+                        <ItemName>{item.name}</ItemName>
+                        <ItemNDescription>{item.description}</ItemNDescription>
+                        <ItemPrice>R${item.price}</ItemPrice>
+                    </InfoContainer>
+                </CardContainer>
+
+            )
+        })}
+        
     </RestaurantItemCardContainer>
       
     );
