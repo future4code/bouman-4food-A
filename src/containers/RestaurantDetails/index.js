@@ -9,13 +9,13 @@ import { RestaurantItemCard } from "./../../components/RestaurantItemCard";
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 const Container = styled.div`
-  margin: auto;
+  margin: 0 auto;
   width: 100%;
 `;
 
 const Card = styled.section`
   /* height: 188px; */
-  margin: 0 16px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -84,7 +84,8 @@ class RestaurantDetails extends Component {
     console.log(this.props.selectRestaurant)
     if (token === null) {
       this.props.goToLoginPage();
-    }else if(this.props.selectRestaurant === undefined){
+    }
+    else if(this.props.selectRestaurant === undefined){
       this.props.goBackPage()
     } 
   }
