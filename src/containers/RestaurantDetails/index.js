@@ -6,7 +6,8 @@ import AppBarComponent from "../../components/AppBarComponent";
 import styled from "styled-components";
 import { fetchRestaurantsDetails } from "../../actions/restaurantsActions";
 import { RestaurantItemCard } from "./../../components/RestaurantItemCard";
-import LinearProgress from '@material-ui/core/LinearProgress'
+import LinearProgress from "@material-ui/core/LinearProgress";
+import ModalPopUp from "../../components/Modal";
 
 const Container = styled.div`
   margin: 0 auto;
@@ -76,26 +77,31 @@ const OtherInfo = styled.div`
 class RestaurantDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      modalDisplay: false
+    };
   }
 
   componentDidMount() {
     const token = window.localStorage.getItem("token");
-    console.log(this.props.selectRestaurant)
+
     if (token === null) {
       this.props.goToLoginPage();
+    } else if (this.props.selectRestaurant === undefined) {
+      this.props.goBackPage();
     }
-    else if(this.props.selectRestaurant === undefined){
-      this.props.goBackPage()
-    } 
   }
 
+  handleModalDisplay = () => {
+    this.setState({ modalDisplay: true });
+  };
+
   render() {
+    let addModalClose = () => this.setState({ modalDisplay: false });
+    const modalFunction = () => this.setState({ modalDisplay: true });
     // Evitar Problemas quando atualizamos a pagina de ver detalhes
-    if(this.props.selectRestaurant === undefined){
-      return(
-        <LinearProgress/>
-      ) 
+    if (this.props.selectRestaurant === undefined) {
+      return <LinearProgress />;
     }
     const allCategories = this.props.selectRestaurant.products.map(el => {
       return el.category;
@@ -114,7 +120,7 @@ class RestaurantDetails extends Component {
         itens: itensOfCategory
       };
     });
-    console.log("cat:", categoryItens);
+
     return (
       <div>
         <AppBarComponent
@@ -148,8 +154,14 @@ class RestaurantDetails extends Component {
           </Card>
         </Container>
         {categoryItens.map(item => {
-          return <RestaurantItemCard itemData={item} />;
+          return (
+            <RestaurantItemCard
+              itemData={item}
+              onClickAdd={this.handleModalDisplay }
+            />
+          );
         })}
+        {this.state.modalDisplay && <ModalPopUp openPopUp={this.state.modalDisplay}/> }
       </div>
     );
   }
@@ -157,14 +169,12 @@ class RestaurantDetails extends Component {
 
 const mapDispatchToProps = dispatch => ({
   goBackPage: () => dispatch(goBack()),
-  goToLoginPage: () => dispatch(push(routes.loginPage)),
-  
+  goToLoginPage: () => dispatch(push(routes.loginPage))
 });
 
 function mapStateToProps(state) {
   return {
-    selectRestaurant: state.restaurants.restaurantDetails,
-    
+    selectRestaurant: state.restaurants.restaurantDetails
   };
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import burguerImg from "./../../images/burguer.png";
 import Divider from "@material-ui/core/Divider";
-import Button from "@material-ui/core/Button";
+import { useState } from "react";
 
 const RestaurantItemCardContainer = styled.div`
   width: 328px;
@@ -97,8 +97,8 @@ const QuantitySelected = styled.p`
   border: 1px solid;
   text-align: center;
   border-radius: 8px;
-  width:30px;
-  align-self: flex-end
+  width: 30px;
+  align-self: flex-end;
 `;
 
 const CardButton = styled.p`
@@ -107,7 +107,7 @@ const CardButton = styled.p`
   border: 1px solid;
   border-radius: 8px;
   margin: 0;
-  width:75px;
+  width: 75px;
 `;
 
 export function RestaurantItemCard(props) {
@@ -126,7 +126,11 @@ export function RestaurantItemCard(props) {
             </InfoContainer>
             <RightContainer>
               <QuantitySelected>0</QuantitySelected>
-              <CardButton type="submit" variant="contained">
+              <CardButton
+                onClick={() => props.onClickAdd()}
+                type="submit"
+                variant="contained"
+              >
                 adicionar
               </CardButton>
             </RightContainer>
