@@ -6,6 +6,7 @@ import { routes } from "../Router/";
 import AppBarComponent from '../../components/AppBarComponent';
 import styled from 'styled-components';
 import { fetchRestaurantsDetails } from "../../actions/restaurantsActions";
+import {RestaurantItemCard} from "./../../components/RestaurantItemCard"
 
 const Container = styled.div`
   margin: auto;
@@ -101,10 +102,10 @@ class RestaurantDetails extends Component {
       })
       return {
         category,
-        itens: [itensOfCategory]
+        itens: itensOfCategory
       }
     })
-    
+    console.log("cat:",categoryItens)
     return (
       <div>
         <AppBarComponent
@@ -133,8 +134,10 @@ class RestaurantDetails extends Component {
             </Info>
           </Card>
         </Container>
-
-        <COMPONENT itemData={categoryItens} />
+        {categoryItens.map( item => {
+          return <RestaurantItemCard itemData={item} />
+        })}
+        
 
       </div>
     );
