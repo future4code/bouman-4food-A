@@ -12,7 +12,7 @@ const Title = styled.p`
   color: #000000;
 `;
 
-function AppBarComponent(props) {
+export function AppBarComponent(props) {
   return (
       <StyledAppBar color="inherit" position="static">
         {props.imageDisplay && <StyledBackImg src={BackButton} onClick={props.onClickButton} />}

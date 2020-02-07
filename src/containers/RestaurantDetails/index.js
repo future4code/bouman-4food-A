@@ -4,6 +4,8 @@ import { push } from "connected-react-router";
 import { routes } from "../Router/";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import { AppBarComponent } from "./../../components/AppBarComponent"
+import {RestaurantItemCard} from "../../components/RestaurantItemCard"
 
 class RestaurantDetails extends Component {
   constructor(props) {
@@ -28,8 +30,10 @@ class RestaurantDetails extends Component {
           title="Restaurante"
           //colocar a prop onClickButton
         />
-        <h1>RestaurantDetails</h1>
+        
+        
         <Button onClick={this.props.goToRestaurantFeed}>Va para RestaurantFeed</Button>
+        <RestaurantItemCard/>
       </div>
     );
   }
