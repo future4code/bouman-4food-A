@@ -3,6 +3,10 @@ const initialState = {
     restaurantDetails: undefined,
     category: "Todos",
     selectedRestaurantId: "",
+    cart: {
+        products: [{}],
+        paymentMethod: [{}]
+    },
 }
 
 
@@ -16,6 +20,8 @@ export const restaurants = (state = initialState, action) => {
             return { ...state, category: action.payload.category}
         case "SET_RESTAURANT_ID":
             return {...state, restaurantId: action.payload.restaurantId}
+        case "ADD_TO_CART":
+            return {...state, cart: state.cart.products.push(action.payload)}
         default:
             return state
     }

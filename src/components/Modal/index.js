@@ -5,6 +5,8 @@ import styled from "styled-components";
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import { connect } from "react-redux";
+import { addToCart } from "../../actions/restaurantsActions"
 const StyledSelect = styled(Select)`
   width: 100%;
 `;
@@ -35,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ModalPopUp(props) {
+export function ModalPopUp(props) {
   const classes = useStyles();
   
   const [modalStyle] = React.useState(getModalStyle);
@@ -48,7 +50,13 @@ export default function ModalPopUp(props) {
   const handleClose = () => {
     console.log("idProd: ",props.idProp,"\nidRestaurant: ",props.idRestaurant,"\nQuantity: ",quantity)
     setOpen(false);
-    props.changeDisplayState() 
+    props.changeDisplayState()
+    
+    const products = [{
+      "id": props.idProp,
+      "quantity": quantity
+    }]
+    props.addToCart(products)
     
     // ja temos id = props.idProp
     // ja temos idRestaurant= props.idRestaurant
@@ -96,3 +104,9 @@ export default function ModalPopUp(props) {
     </div>
   );
 }
+
+const mapDispatchToProps = dispatch => ({
+  addToCart: (products) => dispatch(addToCart(products))
+})
+
+export default connect(null, mapDispatchToProps)(ModalPopUp)
