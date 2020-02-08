@@ -24,6 +24,7 @@ export const userLogin = (email, password) => async (dispatch) => {
     }
 }
 
+
 export const userSignup = (newUserData) => async (dispatch) => {
     try {
         const response = await axios.post(`${baseUrl}/signup`, newUserData)

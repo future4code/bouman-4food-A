@@ -5,7 +5,6 @@ import styled from "styled-components";
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-
 const StyledSelect = styled(Select)`
   width: 100%;
 `;
@@ -41,15 +40,23 @@ export default function ModalPopUp(props) {
   
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(props.openPopUp);
-
+  const [quantity, setQuantity] = React.useState("0") 
   // const handleOpen = () => {
   //   setOpen(true);
   // };
 
   const handleClose = () => {
+    console.log("idProd: ",props.idProp,"\nidRestaurant: ",props.idRestaurant,"\nQuantity: ",quantity)
     setOpen(false);
-    props.changeDisplayState()
+    props.changeDisplayState() 
+    
+    // ja temos id = props.idProp
+    // ja temos idRestaurant= props.idRestaurant
+    // ja temos quantity = quantity
   };
+  const handleSelect = (e) => {
+    setQuantity(e.target.value)
+  }
 
   return (
     <div>
@@ -64,6 +71,8 @@ export default function ModalPopUp(props) {
           <StyledSelect
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-outlined"
+            onChange={handleSelect}
+            value={quantity}
           >
             {/* <MenuItem value="0">
               <em>0</em>

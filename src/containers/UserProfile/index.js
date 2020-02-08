@@ -64,9 +64,9 @@ export function UserProfile(props) {
       <ContainerResquestHistory  component="main" maxWidth="xs">
        <CssBaseline />
         <div className={classes.paper}>
-          {props.orders === [] ?
+          {props.orders !== [] ?
             props.orders.map(request => (
-              <RequestHistoryCard key={request.id} requestText={request.text} requestData={request.data} requestValue={request.value} />
+              <RequestHistoryCard key={request.createdAt} requestData={request} />
             )) :
             <p>Você não completou nenhum pedido</p>
           }

@@ -27,7 +27,6 @@ const TypoRequest = styled.p`
     padding:0px 0px 0px 16px;
     margin: 0px;
     
-
 `;
 
 const TypoData = styled.p`
@@ -77,17 +76,18 @@ const PaperStyled = styled(Paper)`
 
 
 export function RequestHistoryCard(props) {
+    const options = {year:"numeric", month : "long", day: "numeric" }
   return (
     <RequestHistoryWrapper>
         <PaperStyled>
-                <TypoRequest >
-                   {props.requestText}
+                <TypoRequest>
+                   {props.requestData.restaurantName}
                 </TypoRequest>
                 <TypoData>
-                    {props.requestData}
+                {new Date(props.requestData.createdAt).toLocaleDateString('pt-BR',options)}
                 </TypoData>
                 <TypoSubTotal>
-                    SUBTOTAL: R$ {props.requestValue}
+                    SUBTOTAL: R$ {Number(props.requestData.totalPrice).toFixed(2)}
                 </TypoSubTotal>
         </PaperStyled>
     </RequestHistoryWrapper>    

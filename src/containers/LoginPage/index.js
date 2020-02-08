@@ -29,6 +29,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+
 export function LoginPage(props) {
   const classes = useStyles();
 
@@ -121,7 +122,10 @@ export function LoginPage(props) {
   }
   
   return (
-    {pageToRender}
+    <div>
+      {pageToRender}
+    </div>
+    
   );
 }
 

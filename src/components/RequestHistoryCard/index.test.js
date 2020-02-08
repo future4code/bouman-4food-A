@@ -11,3 +11,4 @@ it('footer renders correctly', () => {
         expect(tree).toMatchSnapshot();
     
 })
+

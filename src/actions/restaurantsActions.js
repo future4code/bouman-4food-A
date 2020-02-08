@@ -15,6 +15,7 @@ export const setRestaurantAction = (restaurants) => ({
     }
 })
 
+
 export const fetchRestaurants = () => async (dispatch) => {
     const token = window.localStorage.getItem("token")
     const requestHeader = {
