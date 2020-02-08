@@ -83,6 +83,7 @@ class RestaurantDetails extends Component {
   }
 
   componentDidMount() {
+    
     const token = window.localStorage.getItem("token");
 
     if (token === null) {
@@ -93,7 +94,7 @@ class RestaurantDetails extends Component {
   }
 
   handleModalDisplay = () => {
-    this.setState({ modalDisplay: true });
+    this.setState({ modalDisplay: !this.state.modalDisplay });
   };
 
   render() {
@@ -161,7 +162,7 @@ class RestaurantDetails extends Component {
             />
           );
         })}
-        {this.state.modalDisplay && <ModalPopUp openPopUp={this.state.modalDisplay}/> }
+        {this.state.modalDisplay && <ModalPopUp changeDisplayState={this.handleModalDisplay} openPopUp={this.state.modalDisplay}/> }
       </div>
     );
   }
