@@ -16,3 +16,4 @@ describe('mapDispatchToProps', () => {
         expect(dispatch).toHaveBeenCalledTimes(1);
     });
 });
+

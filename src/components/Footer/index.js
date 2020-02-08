@@ -26,6 +26,7 @@ const ContainerFooter = styled.div`
     rgba(0, 0, 0, 0.14);
 `;
 
+
 export function Footer(props) {
 
   const {currentRoute} = props

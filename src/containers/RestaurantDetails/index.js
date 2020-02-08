@@ -69,7 +69,8 @@ class RestaurantDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalDisplay: false
+      modalDisplay: false,
+      productId: ""
     };
   }
 
@@ -84,8 +85,11 @@ class RestaurantDetails extends Component {
     }
   }
 
-  handleModalDisplay = () => {
-    this.setState({ modalDisplay: !this.state.modalDisplay });
+  handleModalDisplay = (id) => {
+    this.setState({ 
+      modalDisplay: !this.state.modalDisplay,
+      productId:id
+    });
   };
 
   render() {
@@ -149,11 +153,11 @@ class RestaurantDetails extends Component {
           return (
             <RestaurantItemCard
               itemData={item}
-              onClickAdd={this.handleModalDisplay }
+              onClickAdd={this.handleModalDisplay}
             />
           );
         })}
-        {this.state.modalDisplay && <ModalPopUp changeDisplayState={this.handleModalDisplay} openPopUp={this.state.modalDisplay}/> }
+        {this.state.modalDisplay && <ModalPopUp idRestaurant={this.props.selectRestaurant.id} idProp={this.state.productId} changeDisplayState={this.handleModalDisplay} openPopUp={this.state.modalDisplay}/> }
       </div>
     );
   }

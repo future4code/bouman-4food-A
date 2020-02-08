@@ -26,6 +26,7 @@ const mockDetails = [
 ]
 
 
+
 describe("Testa o setRestaurantAction", ()=>{
     test("Verifica se a action tem formato esperado", ()=>{
         const expectedAction = {
@@ -91,7 +92,7 @@ describe("Testa a fetchRestaurants", () => {
 })
 
 describe("Testa a fetchRestaurantsDetails", () => {
-    test("Varifica a chamada da função", async () => {
+    test("Verifica a chamada da função", async () => {
         const dispatchMock = jest.fn()
         
         axios.get = jest.fn(() => ({

@@ -119,6 +119,7 @@ describe("Testa a getProfile", () => {
         expect(dispatchMock).toHaveBeenCalledWith(expectedAction)
     })
 })
+ 
 
 // describe("Testa a addAddress", () => {
 //     test("Varifica a chamada da função", async () => {

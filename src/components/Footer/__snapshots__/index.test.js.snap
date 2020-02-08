@@ -2,40 +2,8 @@
 
 exports[`footer footer renders correctly 1`] = `
 <div
-  className="sc-bbmXgH fonweZ"
+  className="sc-tilXH dDwjBm"
   color="primary"
->
-  <img
-    src="homepage.svg"
-  />
-  <img
-    src="shopping-cart.svg"
-  />
-  <img
-    src="avatar.svg"
-  />
-</div>
-`;
-
-exports[`footer renders correctly 1`] = `
-<div
-  className="sc-bdVaJa dOBmDv"
->
-  <img
-    src="homepage.svg"
-  />
-  <img
-    src="shopping-cart.svg"
-  />
-  <img
-    src="avatar.svg"
-  />
-</div>
-`;
-
-exports[`renders correctly 1`] = `
-<div
-  className="sc-bdVaJa dOBmDv"
 >
   <img
     src="homepage.svg"
