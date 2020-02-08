@@ -35,20 +35,19 @@ describe('mapDispatchToProps', () => {
     });
 });
 
-// describe('mapDispatchToProps', () => {
-//     it('Testa se o mapDispatchToProps foi chamado', () => {
-//         //preparação
-//         const mock = {
-//             email:"astrodev@future4.com",
-//             password:"123456"
-//         };
-//         //execução
-//         const action 
 
-//         mapDispatchToProps(dispatch).login();
-//         expect(dispatch).toHaveBeenCalledTimes(1);
-//     });
-// });
+describe('Testa componente LoginPage', () => {
+	test('Deve chamar a funcao handleOnSubmit quando clicar no botao', () => {
+		// Preparacao
+		const onButtonMock = jest.fn()
+		const component = shallow(<Button  onClick={onButtonMock} />)
 
+		/* const onButton = component.find(Button) */
+		// Execucao
+		component.simulate('click')
 
+		// Verficacao
+		expect(onButtonMock).toHaveBeenCalledTimes(1)
+ 	})
+ })
 

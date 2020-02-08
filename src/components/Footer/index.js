@@ -27,6 +27,7 @@ const ContainerFooter = styled.div`
 `;
 
 
+
 export function Footer(props) {
 
   const {currentRoute} = props

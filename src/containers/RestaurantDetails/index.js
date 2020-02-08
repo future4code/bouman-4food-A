@@ -11,6 +11,7 @@ import ModalPopUp from "../../components/Modal";
 
 const Container = styled.div`
   margin: 0 auto;
+  margin-top: 55px;
   width: 100%;
 `;
 
@@ -22,6 +23,7 @@ const Card = styled.section`
   margin-block-start: 8px;
   margin-block-end: 8px;
   border-radius: 8px;
+  padding: 10px;
 `;
 
 const Img = styled.img`
