@@ -49,6 +49,7 @@ function InitialScreen(props){
     )
 }
 
+
 export const mapDispatchToProps = (dispatch) =>({
      goToLoginPage: () => dispatch(push(routes.loginPage))
  })

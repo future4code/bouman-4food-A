@@ -3,12 +3,12 @@ import {RequestHistoryCard} from './index';
 import renderer from "react-test-renderer";
 
 
-it('footer renders correctly', () => {
+// it('footer renders correctly', () => {
     
-        const tree = renderer
-            .create(<RequestHistoryCard/>)
-            .toJSON();
-        expect(tree).toMatchSnapshot();
+//         const tree = renderer
+//             .create(<RequestHistoryCard/>)
+//             .toJSON();
+//         expect(tree).toMatchSnapshot();
     
-})
+// })
 
