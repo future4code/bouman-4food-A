@@ -1,9 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { mapDispatchToProps } from "./index"
+import { mapDispatchToProps, LoginPage } from "./index"
 import Container from '@material-ui/core/Container';
 import Button from "@material-ui/core/Button";
-import {shallow} from 'enzyme'
+import {shallow, mount} from 'enzyme'
 
 describe("Testar o InitialScreen", ()=>{
     test("Snapshot", ()=>{
@@ -51,18 +51,4 @@ describe('mapDispatchToProps', () => {
 // });
 
 
-describe('Testa componente LoginPage', () => {
-	test('Deve chamar a funcao handleOnSubmit quando clicar no botao', () => {
-		// Preparacao
-		const onButtonMock = jest.fn()
-		const component = shallow(<Button  onClick={onButtonMock} />)
-
-		/* const onButton = component.find(Button) */
-		// Execucao
-		component.simulate('click')
-
-		// Verficacao
-		expect(onButtonMock).toHaveBeenCalledTimes(1)
- 	})
- })
 
