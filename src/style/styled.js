@@ -28,6 +28,8 @@ export const StyledAppBar = styled(AppBar)`
   flex-direction: row !important; /* tem alguma coisa que estava barrando o flex direction */
   justify-content: space-around;
   align-items: center;
+  position: fixed !important;
+  top: 0;
 `;
 
 export const StyledBackImg = styled.img`

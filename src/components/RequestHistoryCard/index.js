@@ -75,6 +75,7 @@ const PaperStyled = styled(Paper)`
 
 
 
+
 export function RequestHistoryCard(props) {
     const options = {year:"numeric", month : "long", day: "numeric" }
   return (
@@ -91,6 +92,7 @@ export function RequestHistoryCard(props) {
                 </TypoSubTotal>
         </PaperStyled>
     </RequestHistoryWrapper>    
+    
         
   );
 }

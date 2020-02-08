@@ -35,22 +35,6 @@ describe('mapDispatchToProps', () => {
     });
 });
 
-// describe('mapDispatchToProps', () => {
-//     it('Testa se o mapDispatchToProps foi chamado', () => {
-//         //preparação
-//         const mock = {
-//             email:"astrodev@future4.com",
-//             password:"123456"
-//         };
-//         //execução
-//         const action 
-
-//         mapDispatchToProps(dispatch).login();
-//         expect(dispatch).toHaveBeenCalledTimes(1);
-//     });
-// });
-
-
 describe('Testa componente LoginPage', () => {
 	test('Deve chamar a funcao handleOnSubmit quando clicar no botao', () => {
 		// Preparacao
@@ -65,4 +49,3 @@ describe('Testa componente LoginPage', () => {
 		expect(onButtonMock).toHaveBeenCalledTimes(1)
  	})
  })
-

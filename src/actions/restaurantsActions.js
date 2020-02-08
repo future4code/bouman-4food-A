@@ -31,6 +31,7 @@ export const fetchRestaurants = () => async (dispatch) => {
     }
 }
 
+
 export const fetchRestaurantsDetails = (restaurantId) => async (dispatch) => {
     const token = window.localStorage.getItem("token")
     const requestHeader = {

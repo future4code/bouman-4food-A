@@ -15,9 +15,7 @@ exports[`footer renders correctly 1`] = `
     />
     <p
       className="sc-bxivhb cAIVKn"
-    >
-      SUBTOTAL: R$ 
-    </p>
+    />
   </div>
 </div>
 `;
