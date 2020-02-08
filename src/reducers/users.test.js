@@ -1,5 +1,5 @@
 import { getUsers, getOrderHistory, getFullAddress } from "../actions/user";
-import users from '../reducers/users';
+import users from './users';
 
 
 describe('User reducers', () => {

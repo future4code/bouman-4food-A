@@ -11,7 +11,6 @@ const RequestHistoryWrapper = styled.div`
     align-items:flex-end;
 `;
 
-
 const TypoRequest = styled.p`
     width: 296px;
     height: 18px;

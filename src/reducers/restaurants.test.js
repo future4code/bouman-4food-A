@@ -39,7 +39,7 @@ describe('reducer restaurants tasks', () => {
     test('test de setRestaurantCategory', () => {
         // Preparação
         const currentState = {
-            category: "Todos",
+            category: "",
         }
 
         const action = setRestaurantCategory(["category"])
@@ -52,13 +52,13 @@ describe('reducer restaurants tasks', () => {
         expect(newState.category).toHaveLength(1)
 
     }) 
-    /* test('test de setRestaurantId', () => {
+    test('test de setRestaurantId', () => {
         // Preparação
         const currentState = {
             selectedRestaurantId: "",
         }
 
-        const action = setRestaurantId(["restaurantId"])
+        const action = setRestaurantId(["1"])
 
         // Execução
         const newState = restaurants(currentState, action)
@@ -67,7 +67,7 @@ describe('reducer restaurants tasks', () => {
 
         expect(newState.selectedRestaurantId).toHaveLength(1)
 
-    })  */
+    }) 
 })
 
 

@@ -42,6 +42,7 @@ export function LoginPage(props) {
     setEmail(event.target.value);
   };
 
+  
   const handleInputPassword = event => {
     setPassword(event.target.value);
   };

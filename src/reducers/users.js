@@ -4,6 +4,7 @@ const initialState = {
     allAddress: [],
 }
 
+
 const users = (state = initialState, action)=>{
     switch(action.type){
         case "GET_ALL_USERS":
@@ -16,5 +17,6 @@ const users = (state = initialState, action)=>{
             return state
     }
 }
+
 
 export default users;

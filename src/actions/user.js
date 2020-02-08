@@ -4,7 +4,6 @@ import { routes } from "../containers/Router"
 
 export const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/FourFoodA"
 
-
 export const userLogin = (email, password) => async (dispatch) => {
     const login = {
         email,

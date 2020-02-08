@@ -6,6 +6,7 @@ const initialState = {
 }
 
 
+
 export const restaurants = (state = initialState, action) => {
     switch (action.type) {
         case "SET_RESTAURANTS_ACTION":
@@ -15,10 +16,11 @@ export const restaurants = (state = initialState, action) => {
         case "SET_RESTAURANT_CATEGORY":
             return { ...state, category: action.payload.category}
         case "SET_RESTAURANT_ID":
-            return {...state, restaurantId: action.payload.restaurantId}
+            return {...state, selectedRestaurantId: action.payload.restaurantId}
         default:
             return state
     }
 }
+
 
 export default restaurants;
