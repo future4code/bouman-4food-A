@@ -3,19 +3,14 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { fetchRestaurantsDetails } from "../../actions/restaurantsActions";
 
-const Container = styled.main`
-  margin: auto;
-  max-width: 480px;
-`;
-
 const Card = styled.section`
+  max-width: 480px;
   height: 188px;
-  margin: 10px 16px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   margin-block-start: 8px;
   margin-block-end: 8px;
   border: solid 1px #b8b8b8;
@@ -29,11 +24,13 @@ const Image = styled.div`
 const Img = styled.img`
   height: 100%;
   width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 `;
 
 const Info = styled.div`
   height: 36.17%;
-  margin: 0 16px;
+  width: 90%;
 `;
 
 const Name = styled.p`
@@ -62,29 +59,23 @@ function RestaurantCard(props) {
   };
 
   return (
-    <div>
-      <Container>
-        <Card
-          onClick={() => {
-            goToRestaurantDetails(props.id);
-          }}
-        >
-          <Image>
-            {/* se tivermos tempo, aprender o canvas */}
-            <Img src={props.restaurantImg} />
-          </Image>
-          <Info>
-            <Name>{props.restaurantName}</Name>
-            <OtherInfoContainer>
-              <OtherInfo>
-                {props.restaurantTime} - {props.restaurantTime + 10} min
-              </OtherInfo>
-              <OtherInfo>Frete R${props.restaurantShipping},00</OtherInfo>
-            </OtherInfoContainer>
-          </Info>
-        </Card>
-      </Container>
-    </div>
+    <Card
+      onClick={() => {goToRestaurantDetails(props.id)}}
+    >
+      <Image>
+        {/* se tivermos tempo, aprender o canvas */}
+        <Img src={props.restaurantImg} />
+      </Image>
+      <Info>
+        <Name>{props.restaurantName}</Name>
+        <OtherInfoContainer>
+          <OtherInfo>
+            {props.restaurantTime} - {props.restaurantTime + 10} min
+          </OtherInfo>
+          <OtherInfo>Frete R$ {Number(props.restaurantShipping).toFixed(2)}</OtherInfo>
+        </OtherInfoContainer>
+      </Info>
+    </Card>
   );
 }
 

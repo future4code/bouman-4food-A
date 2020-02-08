@@ -122,7 +122,7 @@ export function RestaurantItemCard(props) {
             <InfoContainer>
               <ItemName>{item.name}</ItemName>
               <ItemNDescription>{item.description}</ItemNDescription>
-              <ItemPrice>R${item.price}</ItemPrice>
+              <ItemPrice>R$ {Number(item.price).toFixed(2)}</ItemPrice>
             </InfoContainer>
             <RightContainer>
               <QuantitySelected>0</QuantitySelected>

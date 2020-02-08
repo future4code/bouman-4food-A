@@ -49,8 +49,8 @@ export function UserProfile(props) {
           <FontProfile>{props.users.name}</FontProfile>
           <img onClick={props.goToEditUserProfile} src={IconEdit} />
         </EditAddress>
-          <FontProfile>{props.users.email}</FontProfile>
-          <FontProfile>{props.users.cpf}</FontProfile>
+        <FontProfile>{props.users.email}</FontProfile>
+        <FontProfile>{props.users.cpf}</FontProfile>
         <WrapperAddress>
           <EditAddress>
             <TitleAddress>Endereço cadastrado</TitleAddress>
@@ -64,14 +64,16 @@ export function UserProfile(props) {
       <ContainerResquestHistory  component="main" maxWidth="xs">
        <CssBaseline />
         <div className={classes.paper}>
-          {props.orders===[]? props.orders.map(request => (
-            <RequestHistoryCard key={request.id} requestText={request.text} requestData={request.data} requestValue={request.value}></RequestHistoryCard>
-          )):<p>Você não realizou nenhum pedido</p>}
+          {props.orders === [] ?
+            props.orders.map(request => (
+              <RequestHistoryCard key={request.id} requestText={request.text} requestData={request.data} requestValue={request.value} />
+            )) :
+            <p>Você não completou nenhum pedido</p>
+          }
         </div>
       </ContainerResquestHistory>
-      <Footer></Footer>
+      <Footer />
     </div>
-
   );
 }
 

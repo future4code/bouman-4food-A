@@ -15,26 +15,17 @@ const Container = styled.div`
 `;
 
 const Card = styled.section`
-  /* height: 188px; */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center;
-  text-align: center; */
   margin-block-start: 8px;
   margin-block-end: 8px;
-  /* border: solid 1px #b8b8b8; */
   border-radius: 8px;
 `;
 
-// const Image = styled.div`
-//   height: 120px;
-// `
-
 const Img = styled.img`
   height: 120px;
-  /* width: 100%; */
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 `;
@@ -145,7 +136,7 @@ class RestaurantDetails extends Component {
                   {this.props.selectRestaurant.deliveryTime + 10} min
                 </OtherInfo>
                 <OtherInfo>
-                  Frete R${this.props.selectRestaurant.shipping},00
+                  Frete R$ {Number(this.props.selectRestaurant.shipping).toFixed(2)}
                 </OtherInfo>
               </OtherInfoContainer>
               <OtherInfoContainer>
