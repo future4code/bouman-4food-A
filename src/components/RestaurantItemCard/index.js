@@ -127,7 +127,7 @@ export function RestaurantItemCard(props) {
             <RightContainer>
               <QuantitySelected>0</QuantitySelected>
               <CardButton
-                onClick={() => props.onClickAdd(item.id)}
+                onClick={() => props.onClickAdd(item)}
                 type="submit"
                 variant="contained"
               >
