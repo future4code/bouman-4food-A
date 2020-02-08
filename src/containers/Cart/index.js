@@ -157,7 +157,7 @@ class Cart extends React.Component {
             <FontAddressUser>Rua Alessandra Viera, 42</FontAddressUser>
           </WrapperAddress>
           <Container component="main" >
-            {!this.props.cart ? <TextCart>Carrinho vazio</TextCart> : <RestaurantItemCardContainer>
+            {!this.props.cart.products ? <TextCart>Carrinho vazio</TextCart> : <RestaurantItemCardContainer>
               {this.props.cart.products.map(item => {
                 return (
                   <CardContainer>
@@ -165,7 +165,7 @@ class Cart extends React.Component {
                     <InfoContainer>
                       <ItemName>{item.name}</ItemName>
                       <ItemNDescription>{item.description}</ItemNDescription>
-                      <ItemPrice>R$ {Number(item.price).toFixed(2)}</ItemPrice>
+                      <ItemPrice>R$ {Number(item.price*item.quantity).toFixed(2)}</ItemPrice>
                     </InfoContainer>
                     <RightContainer>
                       <QuantitySelected>0</QuantitySelected>

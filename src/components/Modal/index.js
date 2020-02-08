@@ -48,16 +48,13 @@ export function ModalPopUp(props) {
   // };
 
   const handleClose = () => {
-    console.log("idProd: ",props.idProp,"\nidRestaurant: ",props.idRestaurant,"\nQuantity: ",quantity)
+    
+    const products = {...props.product, quantity}
+    props.addToCart(products)
+    console.log("products: ",products)
     setOpen(false);
     props.changeDisplayState()
-    
-    const products = [{
-      "id": props.idProp,
-      "quantity": quantity
-    }]
-    props.addToCart(products)
-    
+        
     // ja temos id = props.idProp
     // ja temos idRestaurant= props.idRestaurant
     // ja temos quantity = quantity

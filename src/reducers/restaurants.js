@@ -4,8 +4,8 @@ const initialState = {
     category: "Todos",
     selectedRestaurantId: "",
     cart: {
-        products: [{}],
-        paymentMethod: [{}]
+        products: [],
+        paymentMethod: ""
     },
 }
 
@@ -23,7 +23,7 @@ export const restaurants = (state = initialState, action) => {
 
             return {...state, selectedRestaurantId: action.payload.restaurantId}
         case "ADD_TO_CART":
-            return {...state, cart: state.cart.products.push(action.payload)}
+            return {...state, cart: {...state.cart,products:[...state.cart.products,action.payload.products]}}
         default:
             return state
     }
