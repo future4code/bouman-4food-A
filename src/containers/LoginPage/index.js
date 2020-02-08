@@ -7,7 +7,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import FourFood from "../../images/logo-future-eats-invert.svg";
@@ -22,14 +21,13 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: theme.spacing(1),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
 }));
-
 
 export function LoginPage(props) {
   const classes = useStyles();
@@ -38,7 +36,6 @@ export function LoginPage(props) {
 
   const [password, setPassword] = useState("")
 
-  
   const handleInputEmail = event => {
     setEmail(event.target.value);
   };
@@ -52,8 +49,11 @@ export function LoginPage(props) {
     props.login(email, password)
   }
 
-  
-    return (
+  let pageToRender
+  if (window.localStorage.getItem('token')) {
+    props.goToRestaurantFeed()
+  } else {
+    pageToRender = (
       <div>
         <ImageLogo>
           <img src={FourFood}/>
@@ -61,9 +61,7 @@ export function LoginPage(props) {
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <div className={classes.paper}>
-            <FontEnter>
-              Entrar
-            </FontEnter>
+            <FontEnter>Entrar</FontEnter>
             <form className={classes.form} noValidate>
               <TextField
                 variant="outlined"
@@ -96,36 +94,36 @@ export function LoginPage(props) {
                 type="submit"
                 fullWidth
                 variant="contained"
-                style={
-                  { 
-                    background:"#e8222e" 
-                  }
-                }
+                style={{ background:"#e8222e" }}
                 className={classes.submit}
                 onClick={handleOnSubmit}
               >
-               Entrar
+                Entrar
               </Button>
-              <Grid 
-                container
-                direction="row"
-                justify="center"
-                alignItems="center"
-                >
-                <Grid item>
-                  <Link  onClick={props.goToSignUp} variant="body2" color="inherit">
-                    {"Não possui cadastro? Clique aqui."}
-                  </Link>
-                </Grid>
+            </form>  
+            
+            <Grid 
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+            >
+              <Grid item>
+                <Link  onClick={props.goToSignUp} variant="body2" color="inherit">
+                  Não possui cadastro? Clique aqui.
+                </Link>
               </Grid>
-            </form>
+            </Grid>
           </div>
-      </Container>
+        </Container>
       </div>
-    );
+    )
+  }
+  
+  return (
+    {pageToRender}
+  );
 }
-
-
 
 export const mapDispatchToProps = (dispatch) =>({
   goToSignUp: () => dispatch(push(routes.signupPage)),

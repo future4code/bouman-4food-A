@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router/";
-import Button from "@material-ui/core/Button";
 import AppBarComponent from "../../components/AppBarComponent";
 import Footer from "../../components/Footer";
 import RestaurantCard from "../../components/RestaurantCard";
@@ -13,7 +12,6 @@ import SearchIcon from "../../images/search.svg"
 import { SearchField, SearchSection } from "../../components/Form/"
 import styled from "styled-components";
 import Container from '@material-ui/core/Container';
-
 
 const ContainerRestaurantFeed = styled(Container)`
   position: absolute;
@@ -33,7 +31,6 @@ const DivApp = styled.div`
     right:0px;
     overflow:hidden;
 `;
-
 
 class RestaurantFeed extends Component {
   constructor(props) {
@@ -70,7 +67,6 @@ class RestaurantFeed extends Component {
   }
 
   render() {
-
     const foundRestaurants = this.searchRestaurant()
     return (
       <div>
@@ -88,7 +84,8 @@ class RestaurantFeed extends Component {
                   <InputAdornment position="start">
                     <img src={SearchIcon} alt="Search" />
                   </InputAdornment>
-              }} />
+              }}
+            />
           </SearchSection>
           <ScrollableTabsButtonAuto/>
         </DivApp>
@@ -102,7 +99,6 @@ class RestaurantFeed extends Component {
             restaurantImg={restaurant.logoUrl}
             />
           ))}
-          <Button onClick={this.props.goToRestaurantDetails}>Va para RestaurantDetails</Button>
         </ContainerRestaurantFeed>
         <Footer />
       </div>
@@ -110,11 +106,9 @@ class RestaurantFeed extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => ({
   restaurants: state.restaurants.allRestaurants,
   category: state.restaurants.category
-
 })
 
 const mapDispatchToProps = (dispatch) => ({
