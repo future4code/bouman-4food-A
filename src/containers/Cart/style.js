@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import RadioGroup from '@material-ui/core/RadioGroup';
 
-
 export const WrapperAddress = styled.div`
   width: 100%;
   height: 76px;
@@ -147,6 +146,8 @@ export const WrapperMain = styled.div`
   position: absolute;
   left: 0px;
   right: 0px;
+  margin-top: 55px;
+  margin-bottom: 65px;
   /*iPhone 5/SE */ 
   height: 474px;
   /*Galaxy S5 */ 

@@ -77,7 +77,6 @@ class RestaurantDetails extends Component {
   }
 
   componentDidMount() {
-    
     const token = window.localStorage.getItem("token");
 
     if (token === null) {
@@ -88,26 +87,28 @@ class RestaurantDetails extends Component {
   }
 
   handleModalDisplay = (item) => {
-    this.setState({ 
+    this.setState({
       modalDisplay: !this.state.modalDisplay,
-      productData:item,
+      productData: item,
 
     });
   };
 
   render() {
-    let addModalClose = () => this.setState({ modalDisplay: false });
-    const modalFunction = () => this.setState({ modalDisplay: true });
     // Evitar Problemas quando atualizamos a pagina de ver detalhes
     if (this.props.selectRestaurant === undefined) {
       return <LinearProgress />;
     }
+
+    //Pegar todas as categorias de produtos do restaurante
     const allCategories = this.props.selectRestaurant.products.map(el => {
       return el.category;
     });
 
+    //Eliminar as categorias repetidas
     const uniqueCategories = Array.from(new Set(allCategories));
-
+    
+    //Pegar os produtos de cada categoria, retornando um objeto com a categoria e o array de produtos
     const categoryItens = uniqueCategories.map(category => {
       const itensOfCategory = this.props.selectRestaurant.products.filter(
         item => {
@@ -120,6 +121,8 @@ class RestaurantDetails extends Component {
       };
     });
 
+    const { selectRestaurant } = this.props
+
     return (
       <div>
         <AppBarComponent
@@ -131,36 +134,40 @@ class RestaurantDetails extends Component {
         <Container>
           <Card>
             {/* se tivermos tempo, aprender o canvas */}
-            <Img src={this.props.selectRestaurant.logoUrl} />
+            <Img src={selectRestaurant.logoUrl} />
             <Info>
-              <Name>{this.props.selectRestaurant.name}</Name>
+              <Name>{selectRestaurant.name}</Name>
               <OtherInfoContainer>
-                <OtherInfo>{this.props.selectRestaurant.category}</OtherInfo>
+                <OtherInfo>{selectRestaurant.category}</OtherInfo>
               </OtherInfoContainer>
               <OtherInfoContainer>
                 <OtherInfo>
-                  {this.props.selectRestaurant.deliveryTime} -{" "}
-                  {this.props.selectRestaurant.deliveryTime + 10} min
+                  {selectRestaurant.deliveryTime} - {selectRestaurant.deliveryTime + 10} min
                 </OtherInfo>
                 <OtherInfo>
-                  Frete R$ {Number(this.props.selectRestaurant.shipping).toFixed(2)}
+                  Frete R$ {Number(selectRestaurant.shipping).toFixed(2)}
                 </OtherInfo>
               </OtherInfoContainer>
               <OtherInfoContainer>
-                <OtherInfo>{this.props.selectRestaurant.address}</OtherInfo>
+                <OtherInfo>{selectRestaurant.address}</OtherInfo>
               </OtherInfoContainer>
             </Info>
           </Card>
         </Container>
-        {categoryItens.map(item => {
-          return (
+        {categoryItens.map(item => (
             <RestaurantItemCard
               itemData={item}
               onClickAdd={this.handleModalDisplay}
             />
-          );
-        })}
-        {this.state.modalDisplay && <ModalPopUp idRestaurant={this.props.selectRestaurant.id} product={this.state.productData} changeDisplayState={this.handleModalDisplay} openPopUp={this.state.modalDisplay}/> }
+        ))}
+        {this.state.modalDisplay &&
+          <ModalPopUp
+            idRestaurant={selectRestaurant.id}
+            product={this.state.productData}
+            changeDisplayState={this.handleModalDisplay}
+            openPopUp={this.state.modalDisplay}
+          />
+        }
       </div>
     );
   }
@@ -171,10 +178,8 @@ const mapDispatchToProps = dispatch => ({
   goToLoginPage: () => dispatch(push(routes.loginPage))
 });
 
-function mapStateToProps(state) {
-  return {
-    selectRestaurant: state.restaurants.restaurantDetails
-  };
-}
+const mapStateToProps = (state) => ({
+    selectRestaurant: state.restaurants.restaurantDetails,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantDetails);
