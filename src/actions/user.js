@@ -23,7 +23,6 @@ export const userLogin = (email, password) => async (dispatch) => {
     }
 }
 
-
 export const userSignup = (newUserData) => async (dispatch) => {
     try {
         const response = await axios.post(`${baseUrl}/signup`, newUserData)
@@ -49,7 +48,6 @@ export const addAddress = (addressData) => async (dispatch) => {
         window.alert("Endereço já cadastrado para esse usuário")
     }
 }
-
 
 export const getUsers = (users) => ({
     type: "GET_ALL_USERS",
