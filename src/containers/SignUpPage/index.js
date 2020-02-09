@@ -34,7 +34,7 @@ class SignUpPage extends Component {
   };
 
   onClickToSignup = (e) => {
-    e.preventDefault();
+    
     
     const { name, email, cpf, password, confirmPassword } = this.state.form
     
