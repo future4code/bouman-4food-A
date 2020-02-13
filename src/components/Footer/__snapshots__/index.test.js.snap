@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`footer footer renders correctly 1`] = `
+<div
+  className="sc-dqBHgY fVQnHU"
+  color="primary"
+>
+  <img
+    src="homepage.svg"
+  />
+  <img
+    src="shopping-cart.svg"
+  />
+  <img
+    src="avatar.svg"
+  />
+</div>
+`;
